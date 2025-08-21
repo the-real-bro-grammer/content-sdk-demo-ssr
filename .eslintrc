@@ -5,14 +5,10 @@
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
     "prettier",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
-  "plugins": [
-    "@typescript-eslint",
-    "prettier",
-    "react"
-  ],
-  "ignorePatterns": [".generated/**/*", "**/*.d.ts", "**/*.js"],
+  "plugins": ["@typescript-eslint", "prettier", "react"],
+  "ignorePatterns": [".generated/**/*", "**/*.d.ts", "**/*.js", "**/generated.ts"],
   "rules": {
     "@next/next/no-img-element": "off", // Don't force next/image
     "jsx-a11y/alt-text": ["warn", { "elements": ["img"] }], // Don't force alt for <Image/> (sourced from Sitecore media)
@@ -20,10 +16,11 @@
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
-        "caughtErrorsIgnorePattern": "."
-      }
+        "caughtErrorsIgnorePattern": ".",
+      },
     ],
     "@typescript-eslint/no-explicit-any": "error",
-    "jsx-quotes": ["error", "prefer-double"]
-  }
+    "jsx-quotes": ["error", "prefer-double"],
+  },
 }
+
