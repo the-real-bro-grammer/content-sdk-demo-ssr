@@ -1,6 +1,8 @@
 import { defineCliConfig } from '@sitecore-content-sdk/nextjs/config-cli';
 import { extractFiles, generateMetadata, generateSites } from '@sitecore-content-sdk/nextjs/tools';
 import { generateQueries } from 'commands/generate-queries';
+import { generateScaffoldedTemplates } from 'commands/generate-templates';
+import { templates } from 'templates/generated';
 import config from './sitecore.config';
 
 export default defineCliConfig({
@@ -17,10 +19,14 @@ export default defineCliConfig({
         queryPath: 'queries',
         outputPath: 'src/lib/graphql/generated.ts',
       }),
+      generateScaffoldedTemplates({
+        templatePath: 'templates',
+        outputPath: 'templates/generated.ts',
+      }),
     ],
   },
   scaffold: {
-    templates: [],
+    templates,
   },
   componentMap: {
     paths: ['src/components'],
