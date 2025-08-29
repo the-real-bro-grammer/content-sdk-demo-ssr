@@ -6,6 +6,7 @@
       "lib/*": ["src/lib/*"],
       "temp/*": ["src/temp/*"],
       "assets/*": ["src/assets/*"],
+      "graphql/*": ["src/lib/graphql/*"]
     },
     "target": "es5",
     "types": ["node"],

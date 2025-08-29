@@ -4,10 +4,11 @@ import path from 'path';
 const generateScaffoldTemplate = (fileName: string, contents: string): string => {
   contents = contents.replaceAll('`', '\\`');
   contents = contents.replaceAll(/\$\{([^}]+)\}/g, "` + '${$1}' + `");
+  contents = contents.replaceAll('ComponentName', '${componentName}');
 
   return `{
         name: "${fileName}",
-        generateTemplate: (_componentName: string) => {
+        generateTemplate: (componentName: string) => {
             return \`${contents}\`
         },
         getNextSteps: (_componentOutputPath: string) => {

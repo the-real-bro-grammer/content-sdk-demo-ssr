@@ -1,32 +1,28 @@
-export const defaultDatasourceQuery = `fragment ItemDetails on Item {
-  name
-  id
-  url {
-    path
-  }
-  fields {
-    name
-    definition {
-      type
-    }
-    jsonValue
-  }
-  template {
-    name
-    id
-  }
-}
-
-query DataSourceQuery($datasource: String!, $language: String!) {
+export const defaultDatasourceQuery = `query ($datasource: String!, $contextItem: String!, $language: String!) {
   datasource: item(path: $datasource, language: $language) {
-    ...ItemDetails
+    id
+    name
+    title: field(name: "Title") {
+      value
+    }
     children {
       results {
-        ...ItemDetails
+        title: field(name: "Title") {
+          value
+        }
       }
     }
   }
+  contextItem: item(path: $contextItem, language: $language) {
+    id
+    name
+    title: field(name: "Title") {
+      value
+    }
+    navTitle: field(name: "NavigationTitle") {
+      value
+    }
+  }
 }
-
 `;  
     

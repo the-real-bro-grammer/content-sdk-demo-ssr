@@ -4,6 +4,7 @@ import { Form } from '@sitecore-content-sdk/nextjs';
 // end of built-in components
 
 // Components imported from the app itself
+import * as Demo2GeneratedTemplate from 'src/components/Demo2GeneratedTemplate';
 import * as GraphQlDemo from 'src/components/demo-1/GraphQlDemo';
 
 
@@ -12,6 +13,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['BYOCWrapper', BYOCWrapper],
   ['FEaaSWrapper', FEaaSWrapper],
   ['Form', Form],
+  ['Demo2GeneratedTemplate', Demo2GeneratedTemplate],
   ['GraphQlDemo', GraphQlDemo],
 ]);
 

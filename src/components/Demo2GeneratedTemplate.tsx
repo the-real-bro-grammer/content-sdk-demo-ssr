@@ -3,7 +3,7 @@ import { ComponentProps } from 'lib/component-props';
 import { GraphQLClient } from 'lib/graphql/client';
 import { JSX } from 'react';
 
-type ComponentNameProps = ComponentProps & {
+type Demo2GeneratedTemplateProps = ComponentProps & {
   data: {
     datasource: {
       id: string;
@@ -12,7 +12,11 @@ type ComponentNameProps = ComponentProps & {
         value: string;
       };
       children: {
-        results: any[];
+        results: {
+          title: {
+            value: string;
+          };
+        }[];
       };
     };
     contextItem: {
@@ -28,7 +32,7 @@ type ComponentNameProps = ComponentProps & {
   };
 };
 
-const Default = (props: ComponentNameProps): JSX.Element => {
+const Default = (props: Demo2GeneratedTemplateProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
 
   return (
