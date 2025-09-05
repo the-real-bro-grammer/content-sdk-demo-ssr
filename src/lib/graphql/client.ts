@@ -1,6 +1,8 @@
 import { GraphQLRequestClient } from '@sitecore-content-sdk/nextjs/client';
 import scConfig from 'sitecore.config';
-import { defaultDatasourceQuery } from './generated';
+import { RelatedBlog } from 'src/types/demo-3/related-blog';
+import { SearchResults } from 'src/types/search-results';
+import { defaultDatasourceQuery, relatedBlogsQuery } from './generated';
 
 export class GraphQLClient {
   private static graphqlendpoint = `https://${scConfig.api.local.apiHost}/sitecore/api/graph/edge`;
@@ -20,5 +22,22 @@ export class GraphQLClient {
     });
 
     return response;
+  };
+
+  public static GetRelatedBlogs = async (
+    blogContainerId: string,
+    currentBlogId: string,
+    categoryId: string
+  ) => {
+    const response = await GraphQLClient.graphQLClient.request<SearchResults<RelatedBlog>>(
+      relatedBlogsQuery,
+      {
+        startSearchLocation: blogContainerId,
+        currentBlog: currentBlogId,
+        category: categoryId,
+      }
+    );
+
+    return response.searchResults.results;
   };
 }
