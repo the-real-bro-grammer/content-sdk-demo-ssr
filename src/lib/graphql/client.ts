@@ -42,6 +42,7 @@ export class GraphQLClient {
     return response.searchResults.results;
   };
 
+  // Shared GraphQL lookup used by custom sitemap builders to pull bucket items efficiently.
   public static GetBucketItemsForSitemap = async (
     path: string,
     template: string
@@ -54,6 +55,6 @@ export class GraphQLClient {
       }
     );
 
-    return response?.searchResults?.results;
+    return response?.searchResults?.results ?? [];
   };
 }
