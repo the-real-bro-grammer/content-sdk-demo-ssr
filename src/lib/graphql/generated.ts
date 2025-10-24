@@ -25,6 +25,28 @@ export const defaultDatasourceQuery = `query ($datasource: String!, $contextItem
   }
 }
 `;  
+    export const getAllBucketItemsQuery = `fragment ItemDetails on Item {
+  name
+  lastMod: field(name: "__Updated") {
+    value
+  }
+}
+
+query DataSourceQuery($path: String!, $template: String!) {
+  searchResults: search(
+    where: {
+      AND: [
+        { name: "_templates", value: $template, operator: CONTAINS }
+        { name: "_path", value: $path, operator: CONTAINS }
+      ]
+    }
+  ) {
+    results {
+      ...ItemDetails
+    }
+  }
+}
+`;  
     export const relatedBlogsQuery = `fragment ItemDetails on Item {
   id
   title: field(name: "Title") {

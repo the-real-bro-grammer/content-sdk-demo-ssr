@@ -1,8 +1,9 @@
 import { GraphQLRequestClient } from '@sitecore-content-sdk/nextjs/client';
 import scConfig from 'sitecore.config';
 import { RelatedBlog } from 'src/types/demo-3/related-blog';
+import { SitemapData } from 'src/types/demo-4/sitemap-data';
 import { SearchResults } from 'src/types/search-results';
-import { defaultDatasourceQuery, relatedBlogsQuery } from './generated';
+import { defaultDatasourceQuery, getAllBucketItemsQuery, relatedBlogsQuery } from './generated';
 
 export class GraphQLClient {
   private static graphqlendpoint = `https://${scConfig.api.local.apiHost}/sitecore/api/graph/edge`;
@@ -39,5 +40,20 @@ export class GraphQLClient {
     );
 
     return response.searchResults.results;
+  };
+
+  public static GetBucketItemsForSitemap = async (
+    path: string,
+    template: string
+  ): Promise<SitemapData[]> => {
+    const response = await GraphQLClient.graphQLClient.request<SearchResults<SitemapData>>(
+      getAllBucketItemsQuery,
+      {
+        path,
+        template,
+      }
+    );
+
+    return response?.searchResults?.results;
   };
 }

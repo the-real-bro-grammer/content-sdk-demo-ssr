@@ -1,7 +1,7 @@
-import { SitecoreClient } from '@sitecore-content-sdk/nextjs/client';
 import scConfig from 'sitecore.config';
+import { IdkSitecoreClient } from './client/sitecore-client';
 
-const client = new SitecoreClient({
+const client = new IdkSitecoreClient({
   ...scConfig,
 });
 
