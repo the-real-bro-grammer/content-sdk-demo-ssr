@@ -21,6 +21,17 @@
     ],
     "@typescript-eslint/no-explicit-any": "error",
     "jsx-quotes": ["error", "prefer-double"],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "crlf",
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "es5",
+        "printWidth": 100
+      }
+    ],
   },
 }
 

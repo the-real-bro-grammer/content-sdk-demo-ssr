@@ -1,17 +1,17 @@
-import { useEffect, JSX } from 'react';
-import { GetServerSideProps } from 'next';
-import NotFound from 'src/NotFound';
-import Layout from 'src/Layout';
+import components from '.sitecore/component-map';
 import {
-  SitecoreProvider,
   ComponentPropsContext,
   SitecorePageProps,
+  SitecoreProvider,
 } from '@sitecore-content-sdk/nextjs';
-import { extractPath, handleEditorFastRefresh } from '@sitecore-content-sdk/nextjs/utils';
 import { isDesignLibraryPreviewData } from '@sitecore-content-sdk/nextjs/editing';
+import { extractPath, handleEditorFastRefresh } from '@sitecore-content-sdk/nextjs/utils';
 import client from 'lib/sitecore-client';
-import components from '.sitecore/component-map';
+import { GetServerSideProps } from 'next';
+import { JSX, useEffect } from 'react';
 import scConfig from 'sitecore.config';
+import Layout from 'src/Layout';
+import NotFound from 'src/NotFound';
 
 const SitecorePage = ({ page, notFound, componentProps }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
