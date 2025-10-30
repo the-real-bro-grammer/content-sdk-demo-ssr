@@ -7,6 +7,7 @@ import { Product } from 'src/types/demo-4/product';
 const Default = (props: ComponentProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   const { page } = useSitecore();
+  // Product data is attached server-side by the Sitecore client and surfaced via clientData.
   const productDetails = page.layout.sitecore.context.clientData?.[
     CONSTANTS.CONTEXT.PRODUCT_DETAIL
   ] as Product;
@@ -15,6 +16,7 @@ const Default = (props: ComponentProps): JSX.Element => {
     return <></>;
   }
 
+  // Pull individual fields for readability when wiring up the view below.
   const {
     name,
     description,
@@ -30,6 +32,7 @@ const Default = (props: ComponentProps): JSX.Element => {
     reviewCount,
   } = productDetails;
 
+  // Prefer locale-aware formatting but fall back to a simple currency display.
   const priceLabel = (() => {
     try {
       return new Intl.NumberFormat('en-US', {
@@ -54,7 +57,7 @@ const Default = (props: ComponentProps): JSX.Element => {
           <header className="product-example__header">
             <p className="product-example__category">
               {category}
-              {brand ? ` • ${brand}` : ''}
+              {brand ? ` - ${brand}` : ''}
             </p>
             <h2 className="product-example__title">{name}</h2>
             {sku ? <p className="product-example__sku">SKU: {sku}</p> : null}
@@ -95,3 +98,4 @@ const Default = (props: ComponentProps): JSX.Element => {
 };
 
 export default withDatasourceCheck()<ComponentProps>(Default);
+

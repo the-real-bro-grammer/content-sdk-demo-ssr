@@ -96,6 +96,7 @@ export class IdkSitecoreClient extends SitecoreClient {
   ): Promise<Page | null> {
     const computedPath = this.parsePath(path);
     if (computedPath.startsWith('/shop')) {
+      // /shop is backed by a wildcard item; resolve the slug and hydrate product context manually.
       const pathSplit = computedPath.split('/');
       const productSlug = pathSplit.length > 2 ? pathSplit[2] : '';
       if (!productSlug) {
@@ -121,6 +122,7 @@ export class IdkSitecoreClient extends SitecoreClient {
         product;
     }
 
+    // Delegate back to the base client so normal Sitecore GraphQL rendering continues.
     return await super.getPage(path, pageOptions, fetchOptions);
   }
 }

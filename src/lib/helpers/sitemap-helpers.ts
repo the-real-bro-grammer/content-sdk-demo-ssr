@@ -82,6 +82,7 @@ const BuildBlogSitemap = async (): Promise<string[]> => {
   return blogs.map((p) => `blogs/${p.name}`);
 };
 
+// Use the shared Product contract so sitemap data matches middleware responses.
 type ProductApiResult = Product;
 
 // Derive product detail URLs from the external commerce feed.
@@ -91,6 +92,7 @@ const BuildProductSitemap = async (): Promise<string[]> => {
     return [];
   }
 
+  // Slugs align with the `/shop/[slug]` wildcard route produced by the Sitecore client.
   return products.map((p) => `shop/${p.slug}`);
 };
 
@@ -100,6 +102,7 @@ const callProductApi = async (): Promise<ProductApiResult[]> => {
     const response = await ProductApi.GetAllProducts();
     return response.products ?? [];
   } catch (error) {
+    // Swallow the error so the overall sitemap still renders even if the API is down.
     console.error('Failed to fetch products for sitemap', error);
     return [];
   }

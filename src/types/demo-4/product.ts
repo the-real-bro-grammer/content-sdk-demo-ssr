@@ -1,3 +1,4 @@
+// Represents the shape of a single product returned by the demo commerce API.
 export type Product = {
   id: string;
   name: string;
