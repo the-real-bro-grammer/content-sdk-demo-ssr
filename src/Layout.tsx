@@ -1,11 +1,12 @@
 /**
  * This Layout is needed for Starter Kit.
  */
-import React, { JSX } from 'react';
+import { DesignLibrary, Field, Page, Placeholder } from '@sitecore-content-sdk/nextjs';
 import Head from 'next/head';
-import { Placeholder, Field, DesignLibrary, Page } from '@sitecore-content-sdk/nextjs';
+import { JSX } from 'react';
 import Scripts from 'src/Scripts';
 import SitecoreStyles from 'src/components/content-sdk/SitecoreStyles';
+import MetaLinks from 'src/sub-components/demo-4/MetaLinks';
 
 interface LayoutProps {
   page: Page;
@@ -26,6 +27,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
     <>
       <Scripts />
       <SitecoreStyles layoutData={layout} />
+      <MetaLinks />
       <Head>
         <title>{fields?.Title?.value?.toString() || 'Page'}</title>
         <link rel="icon" href="/favicon.ico" />

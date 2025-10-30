@@ -1,10 +1,14 @@
 import {
   FetchOptions,
+  Page,
+  PageOptions,
   SitecoreClientInit,
   SitemapXmlOptions,
 } from '@sitecore-content-sdk/core/client';
 import { NativeDataFetcher } from '@sitecore-content-sdk/nextjs';
 import { SitecoreClient } from '@sitecore-content-sdk/nextjs/client';
+import { ProductApi } from 'lib/api/commerce/products';
+import { CONSTANTS } from 'lib/helpers/constants';
 import {
   BuildCustomSitemapLinks,
   BuildSitemap,
@@ -83,5 +87,40 @@ export class IdkSitecoreClient extends SitecoreClient {
     }
 
     return sitemap;
+  }
+
+  override async getPage(
+    path: string | string[],
+    pageOptions: PageOptions,
+    fetchOptions?: FetchOptions
+  ): Promise<Page | null> {
+    const computedPath = this.parsePath(path);
+    if (computedPath.startsWith('/shop')) {
+      const pathSplit = computedPath.split('/');
+      const productSlug = pathSplit.length > 2 ? pathSplit[2] : '';
+      if (!productSlug) {
+        return null;
+      }
+
+      const product = await ProductApi.GetProductByName(productSlug);
+      if (product == null) {
+        return null;
+      }
+
+      const productDetailPage = await super.getPage('/shop/,-w-,', pageOptions, fetchOptions);
+
+      if (!productDetailPage) {
+        return null;
+      }
+
+      if (!productDetailPage.layout.sitecore.context.clientData) {
+        productDetailPage.layout.sitecore.context.clientData = {};
+      }
+
+      productDetailPage.layout.sitecore.context.clientData[CONSTANTS.CONTEXT.PRODUCT_DETAIL] =
+        product;
+    }
+
+    return await super.getPage(path, pageOptions, fetchOptions);
   }
 }
