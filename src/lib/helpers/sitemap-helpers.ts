@@ -1,4 +1,6 @@
+import { ProductApi } from 'lib/api/commerce/products';
 import { GraphQLClient } from 'lib/graphql/client';
+import { Product } from 'src/types/demo-4/product';
 
 type SitemapBuilderProps = {
   protocol: string;
@@ -80,9 +82,7 @@ const BuildBlogSitemap = async (): Promise<string[]> => {
   return blogs.map((p) => `blogs/${p.name}`);
 };
 
-type ProductApiResult = {
-  name: string;
-};
+type ProductApiResult = Product;
 
 // Derive product detail URLs from the external commerce feed.
 const BuildProductSitemap = async (): Promise<string[]> => {
@@ -91,16 +91,16 @@ const BuildProductSitemap = async (): Promise<string[]> => {
     return [];
   }
 
-  return products.map((p) => `shop/${p.name}`);
+  return products.map((p) => `shop/${p.slug}`);
 };
 
-// Temporary stub that simulates a product API integration. Swap this for the real call when ready.
+// Fetch products from the commerce API so sitemap URLs stay in sync.
 const callProductApi = async (): Promise<ProductApiResult[]> => {
-  const exampleProductApiResult: ProductApiResult[] = [
-    { name: 'product-1' },
-    { name: 'product-2' },
-    { name: 'product-3' },
-  ];
-
-  return Promise.resolve(exampleProductApiResult);
+  try {
+    const response = await ProductApi.GetAllProducts();
+    return response.products ?? [];
+  } catch (error) {
+    console.error('Failed to fetch products for sitemap', error);
+    return [];
+  }
 };

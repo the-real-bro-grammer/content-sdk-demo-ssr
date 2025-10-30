@@ -12,6 +12,4 @@ import scClient from 'lib/sitecore-client';
 // Wire up the SitemapMiddleware handler
 const handler = new SitemapMiddleware(scClient, sites).getHandler();
 
-console.log('SITEMAP API');
-
 export default handler;
