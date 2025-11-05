@@ -8,8 +8,8 @@ import metadata from '.sitecore/metadata.json';
  */
 
 const handler = new EditingConfigMiddleware({
-  components,
-  metadata,
+    components,
+    metadata,
 }).getHandler();
 
 export default handler;

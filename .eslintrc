@@ -1,37 +1,43 @@
 {
-  "root": true,
-  "extends": [
-    "next",
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
-  ],
-  "plugins": ["@typescript-eslint", "prettier", "react"],
-  "ignorePatterns": [".generated/**/*", "**/*.d.ts", "**/*.js", "**/generated.ts"],
-  "rules": {
-    "@next/next/no-img-element": "off", // Don't force next/image
-    "jsx-a11y/alt-text": ["warn", { "elements": ["img"] }], // Don't force alt for <Image/> (sourced from Sitecore media)
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      {
-        "caughtErrorsIgnorePattern": ".",
-      },
+    "root": true,
+    "extends": [
+        "next",
+        "next/core-web-vitals",
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "plugin:prettier/recommended",
     ],
-    "@typescript-eslint/no-explicit-any": "error",
-    "jsx-quotes": ["error", "prefer-double"],
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "crlf",
-        "semi": true,
-        "singleQuote": true,
-        "tabWidth": 2,
-        "trailingComma": "es5",
-        "printWidth": 100
-      }
-    ],
-  },
+    "plugins": ["@typescript-eslint", "prettier", "react"],
+    "ignorePatterns": [".generated/**/*", "**/*.d.ts", "**/*.js", "**/generated.ts"],
+    "rules": {
+        "@next/next/no-img-element": "off", // Don't force next/image
+        "jsx-a11y/alt-text": ["warn", { "elements": ["img"] }], // Don't force alt for <Image/> (sourced from Sitecore media)
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                "caughtErrorsIgnorePattern": ".",
+            },
+        ],
+        "@typescript-eslint/no-explicit-any": "error",
+        "jsx-quotes": ["error", "prefer-double"],
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto",
+                "semi": true,
+                "tabWidth": 4,
+                "trailingComma": "es5",
+                "printWidth": 100,
+                "singleQuote": true,
+                "editor.formatOnSave": true,
+                "proseWrap": "always",
+                "requireConfig": false,
+                "useTabs": false,
+                "sortingMethod": "alphabetical",
+                "bracketSpacing": true,
+                "jsxBracketSameLine": false,
+            },
+        ],
+    },
 }
-

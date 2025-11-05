@@ -13,7 +13,7 @@ import config from 'sitecore.config';
 
 // Import your client-only components via client-bundle. Nextjs's dynamic() call will ensure they are only rendered client-side
 const ClientBundle = dynamic(() => import('./index.client'), {
-  ssr: false,
+    ssr: false,
 });
 
 // As long as component bundle is exported and rendered on page (as an empty element), client-only BYOC components are registered and become available
@@ -24,18 +24,18 @@ FEAAS.enableNextClientsideComponents(dynamic, ClientBundle);
 import './index.hybrid';
 
 const BYOCInit = (): JSX.Element | null => {
-  const { page } = React.useContext(SitecoreProviderReactContext);
-  const { pageState } = page.layout.sitecore.context;
-  // Set context properties to be available within BYOC components
-  FEAAS.setContextProperties({
-    sitecoreEdgeUrl: config.api.edge?.edgeUrl,
-    sitecoreEdgeContextId: config.api.edge?.contextId,
-    pageState: pageState || LayoutServicePageState.Normal,
-    siteName: page.siteName || config.defaultSite,
-    eventsSDK: Events,
-  });
+    const { page } = React.useContext(SitecoreProviderReactContext);
+    const { pageState } = page.layout.sitecore.context;
+    // Set context properties to be available within BYOC components
+    FEAAS.setContextProperties({
+        sitecoreEdgeUrl: config.api.edge?.edgeUrl,
+        sitecoreEdgeContextId: config.api.edge?.contextId,
+        pageState: pageState || LayoutServicePageState.Normal,
+        siteName: page.siteName || config.defaultSite,
+        eventsSDK: Events,
+    });
 
-  return <FEAAS.ExternalComponentBundle />;
+    return <FEAAS.ExternalComponentBundle />;
 };
 
 export default BYOCInit;

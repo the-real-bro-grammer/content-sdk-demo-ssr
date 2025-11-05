@@ -6,55 +6,55 @@ import { SearchResults } from 'src/types/search-results';
 import { defaultDatasourceQuery, getAllBucketItemsQuery, relatedBlogsQuery } from './generated';
 
 export class GraphQLClient {
-  private static graphqlendpoint = `https://${scConfig.api.local.apiHost}/sitecore/api/graph/edge`;
-  private static graphQLClient = new GraphQLRequestClient(GraphQLClient.graphqlendpoint, {
-    apiKey: scConfig.api.local.apiKey,
-  });
-
-  public static GetDefaultDataSource = async (
-    datasource: string,
-    contextItem: string,
-    language: string
-  ) => {
-    const response = await GraphQLClient.graphQLClient.request(defaultDatasourceQuery, {
-      datasource,
-      contextItem,
-      language,
+    private static graphqlendpoint = `https://${scConfig.api.local.apiHost}/sitecore/api/graph/edge`;
+    private static graphQLClient = new GraphQLRequestClient(GraphQLClient.graphqlendpoint, {
+        apiKey: scConfig.api.local.apiKey,
     });
 
-    return response;
-  };
+    public static GetDefaultDataSource = async (
+        datasource: string,
+        contextItem: string,
+        language: string
+    ) => {
+        const response = await GraphQLClient.graphQLClient.request(defaultDatasourceQuery, {
+            datasource,
+            contextItem,
+            language,
+        });
 
-  public static GetRelatedBlogs = async (
-    blogContainerId: string,
-    currentBlogId: string,
-    categoryId: string
-  ) => {
-    const response = await GraphQLClient.graphQLClient.request<SearchResults<RelatedBlog>>(
-      relatedBlogsQuery,
-      {
-        startSearchLocation: blogContainerId,
-        currentBlog: currentBlogId,
-        category: categoryId,
-      }
-    );
+        return response;
+    };
 
-    return response.searchResults.results;
-  };
+    public static GetRelatedBlogs = async (
+        blogContainerId: string,
+        currentBlogId: string,
+        categoryId: string
+    ) => {
+        const response = await GraphQLClient.graphQLClient.request<SearchResults<RelatedBlog>>(
+            relatedBlogsQuery,
+            {
+                startSearchLocation: blogContainerId,
+                currentBlog: currentBlogId,
+                category: categoryId,
+            }
+        );
 
-  // Shared GraphQL lookup used by custom sitemap builders to pull bucket items efficiently.
-  public static GetBucketItemsForSitemap = async (
-    path: string,
-    template: string
-  ): Promise<SitemapData[]> => {
-    const response = await GraphQLClient.graphQLClient.request<SearchResults<SitemapData>>(
-      getAllBucketItemsQuery,
-      {
-        path,
-        template,
-      }
-    );
+        return response.searchResults.results;
+    };
 
-    return response?.searchResults?.results ?? [];
-  };
+    // Shared GraphQL lookup used by custom sitemap builders to pull bucket items efficiently.
+    public static GetBucketItemsForSitemap = async (
+        path: string,
+        template: string
+    ): Promise<SitemapData[]> => {
+        const response = await GraphQLClient.graphQLClient.request<SearchResults<SitemapData>>(
+            getAllBucketItemsQuery,
+            {
+                path,
+                template,
+            }
+        );
+
+        return response?.searchResults?.results ?? [];
+    };
 }

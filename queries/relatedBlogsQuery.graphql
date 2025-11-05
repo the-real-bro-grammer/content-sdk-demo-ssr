@@ -1,39 +1,39 @@
 fragment ItemDetails on Item {
-  id
-  title: field(name: "Title") {
-    value
-  }
-  urlWrapper: url {
-    url
-  }
-  image: field(name: "Image") {
-    jsonValue
-  }
+    id
+    title: field(name: "Title") {
+        value
+    }
+    urlWrapper: url {
+        url
+    }
+    image: field(name: "Image") {
+        jsonValue
+    }
 }
 
 query ItemListingSearch(
-  $startSearchLocation: String!
-  $currentBlog: String!
-  $category: String!
-  $first: Int = 3
+    $startSearchLocation: String!
+    $currentBlog: String!
+    $category: String!
+    $first: Int = 3
 ) {
-  searchResults: search(
-    where: {
-      AND: [
-        { name: "_path", value: $startSearchLocation, operator: CONTAINS }
-        { name: "category", value: $category, operator: EQ }
-        { name: "_path", value: $currentBlog, operator: NCONTAINS }
-      ]
+    searchResults: search(
+        where: {
+            AND: [
+                { name: "_path", value: $startSearchLocation, operator: CONTAINS }
+                { name: "category", value: $category, operator: EQ }
+                { name: "_path", value: $currentBlog, operator: NCONTAINS }
+            ]
+        }
+        first: $first
+    ) {
+        total
+        pageInfo {
+            endCursor
+            hasNext
+        }
+        results {
+            ...ItemDetails
+        }
     }
-    first: $first
-  ) {
-    total
-    pageInfo {
-      endCursor
-      hasNext
-    }
-    results {
-      ...ItemDetails
-    }
-  }
 }

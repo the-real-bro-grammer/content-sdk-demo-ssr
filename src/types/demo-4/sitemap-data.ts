@@ -1,6 +1,6 @@
 export type SitemapData = {
-  name: string;
-  lastMod: {
-    value: string;
-  };
+    name: string;
+    lastMod: {
+        value: string;
+    };
 };

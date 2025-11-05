@@ -25,3 +25,5 @@
 .sitecore/*
 # except for component-map
 !.sitecore/component-map.ts
+.env.container.example
+.env.remote.example

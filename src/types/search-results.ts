@@ -1,5 +1,5 @@
 export interface SearchResults<T> {
-  searchResults: {
-    results: T[];
-  };
+    searchResults: {
+        results: T[];
+    };
 }

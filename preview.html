@@ -1,0 +1,948 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="preload"
+            as="image"
+            imagesrcset="https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-250/idk-sitecore-transparent.webp 250w, https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-150/idk-sitecore-transparent.webp 150w, https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-75/idk-sitecore-transparent.webp 75w"
+            imagesizes="100vw"
+            fetchpriority="high"
+        />
+        <link
+            rel="preload"
+            as="image"
+            href="https://assets.reactbricks.com/images/avatars/8WGgCcvUmqH1jtn.jpg"
+        />
+        <link
+            rel="preload"
+            as="image"
+            href="https://reactbricks.com/_next/static/media/reactbricks_icon.c57a7be4.svg"
+        />
+        <link
+            rel="stylesheet"
+            href="/_next/static/css/ac374cd9a5cf9473.css"
+            data-precedence="next"
+        />
+        <link
+            rel="stylesheet"
+            href="/_next/static/css/b67d904662641e59.css"
+            data-precedence="next"
+        />
+        <link
+            rel="stylesheet"
+            href="/_next/static/css/703c5c3201c7891e.css"
+            data-precedence="next"
+        />
+        <link
+            rel="stylesheet"
+            href="/_next/static/css/7688fac2772ee7d3.css"
+            data-precedence="next"
+        />
+        <link
+            rel="stylesheet"
+            href="/_next/static/css/931eb87cdef03851.css"
+            data-precedence="next"
+        />
+        <link
+            rel="preload"
+            as="script"
+            fetchpriority="low"
+            href="/_next/static/chunks/webpack-aaeec7bc42122ea2.js"
+        />
+        <script src="/_next/static/chunks/4bd1b696-fd4fc486a3c4279b.js" async=""></script>
+        <script src="/_next/static/chunks/1684-e03483636d685c34.js" async=""></script>
+        <script src="/_next/static/chunks/main-app-d41d56f775a954bb.js" async=""></script>
+        <script src="/_next/static/chunks/0e762574-bf4b7ff06e15aac3.js" async=""></script>
+        <script src="/_next/static/chunks/ee560e2c-d478646c4b795648.js" async=""></script>
+        <script src="/_next/static/chunks/2749-6576905c0016a78b.js" async=""></script>
+        <script src="/_next/static/chunks/4301-5ea4646eb4fc0492.js" async=""></script>
+        <script src="/_next/static/chunks/4357-ad223617e01f2460.js" async=""></script>
+        <script src="/_next/static/chunks/app/preview/page-7b79a0f5b72ec13d.js" async=""></script>
+        <script src="/_next/static/chunks/8e1d74a4-716c73838d384aa2.js" async=""></script>
+        <script src="/_next/static/chunks/479ba886-62516d63cd331381.js" async=""></script>
+        <script src="/_next/static/chunks/fc2f6fa8-34fae623aa7b2bca.js" async=""></script>
+        <script src="/_next/static/chunks/3098-89539c01a50cdb73.js" async=""></script>
+        <script src="/_next/static/chunks/6982-b71fa6e58d3a9908.js" async=""></script>
+        <script src="/_next/static/chunks/app/preview/layout-55d20384f58083ad.js" async=""></script>
+        <title>Part 2: Wildcard Pages with Content SDK: Item Resolver</title>
+        <meta name="description" content="Next.js with Server Components" />
+        <script>
+            document
+                .querySelectorAll('body link[rel="icon"], body link[rel="apple-touch-icon"]')
+                .forEach((el) => document.head.appendChild(el));
+        </script>
+        <script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" nomodule=""></script>
+    </head>
+    <body class="bg-white dark:bg-[#0d1117]">
+        <div hidden=""><!--$--><!--/$--></div>
+        <script>
+            ((e, r, n, a, i, o, s, l) => {
+                let u = document.documentElement,
+                    c = ['light', 'dark'];
+                function d(r) {
+                    var n;
+                    ((Array.isArray(e) ? e : [e]).forEach((e) => {
+                        let n = 'class' === e,
+                            a = n && o ? i.map((e) => o[e] || e) : i;
+                        n
+                            ? (u.classList.remove(...a), u.classList.add(o && o[r] ? o[r] : r))
+                            : u.setAttribute(e, r);
+                    }),
+                        (n = r),
+                        l && c.includes(n) && (u.style.colorScheme = n));
+                }
+                if (a) d(a);
+                else
+                    try {
+                        let e = localStorage.getItem(r) || n,
+                            a =
+                                s && 'system' === e
+                                    ? window.matchMedia('(prefers-color-scheme: dark)').matches
+                                        ? 'dark'
+                                        : 'light'
+                                    : e;
+                        d(a);
+                    } catch (e) {}
+            })('class', 'color-mode', 'light', null, ['light', 'dark'], null, false, true);
+        </script>
+        <main>
+            <div class="flex flex-col h-screen justify-between font-content antialiased">
+                <main class="mb-auto dark:bg-gray-900">
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <nav
+                                class="py-5 px-5 sm:mx-[5.55555%] xl:mx-[11.1111%] flex justify-start items-center"
+                            >
+                                <a class="inline-flex py-1.5 px-2 mr-6" href="/"
+                                    ><img
+                                        src="https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/original/USMpFQDZDwSDHYa/idk-sitecore-transparent.webp"
+                                        srcset="
+                                            https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-250/idk-sitecore-transparent.webp 250w,
+                                            https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-150/idk-sitecore-transparent.webp 150w,
+                                            https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-75/idk-sitecore-transparent.webp   75w
+                                        "
+                                        sizes="100vw"
+                                        alt="IDK Sitecore"
+                                        width="250"
+                                        height="50"
+                                        loading="eager"
+                                        decoding="async"
+                                        class="rb-lazy block w-32 h-7 object-contain object-left"
+                                        fetchpriority="high"
+                                /></a>
+                                <div class="hidden lg:flex items-center space-x-2">
+                                    <div>
+                                        <a
+                                            class="hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600"
+                                            href="/"
+                                            ><span>Home</span></a
+                                        ><a
+                                            class="block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600"
+                                            href="/"
+                                            ><div class=""><!-- -->Home</div></a
+                                        >
+                                    </div>
+                                    <div>
+                                        <a
+                                            class="hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600"
+                                            href="/blog"
+                                            ><span>Blog</span></a
+                                        ><a
+                                            class="block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600"
+                                            href="/blog"
+                                            ><div class=""><!-- -->Blog</div></a
+                                        >
+                                    </div>
+                                    <div>
+                                        <a
+                                            class="hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600"
+                                            href="/about"
+                                            ><span>About</span></a
+                                        ><a
+                                            class="block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600"
+                                            href="/about"
+                                            ><div class=""><!-- -->About</div></a
+                                        >
+                                    </div>
+                                    <div>
+                                        <a
+                                            class="hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600"
+                                            href="/contact"
+                                            ><span>Contact</span></a
+                                        ><a
+                                            class="block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600"
+                                            href="/contact"
+                                            ><div class=""><!-- -->Contact</div></a
+                                        >
+                                    </div>
+                                    <div>
+                                        <a
+                                            class="hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600"
+                                            href="/videos"
+                                            ><span>Videos</span></a
+                                        ><a
+                                            class="block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600"
+                                            href="/videos"
+                                            ><div class=""><!-- -->Videos</div></a
+                                        >
+                                    </div>
+                                </div>
+                                <div class="hidden lg:block ml-auto"></div>
+                                <div
+                                    class="relative ml-auto lg:hidden flex items-center h-full sm:gap-x-4"
+                                >
+                                    <button
+                                        class="group p-1 w-7 h-7 flex justify-center items-center rounded-[5px] bg-gray-200 dark:bg-transparent hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600 dark:hover:text-sky-500 focus:bg-sky-500/20 dark:focus:bg-sky-500/40 focus:text-sky-600 dark:focus:text-sky-500"
+                                    >
+                                        <svg
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-width="2"
+                                            viewBox="0 0 24 24"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="text-gray-600 dark:text-white"
+                                            height="20"
+                                            width="20"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="pt-0 pb-0">
+                            <hr class="border-black/10 dark:border-white/20 relative" />
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div
+                                class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-12 pb-12 flex m-auto"
+                            >
+                                <img
+                                    src="https://images.reactbricks.com/original/71fd29e5-d54d-4c99-a2da-681bd8d888d1/seaside.webp"
+                                    srcset="
+                                        https://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-1080/seaside.webp 1080w,
+                                        https://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-600/seaside.webp   600w,
+                                        https://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-300/seaside.webp   300w
+                                    "
+                                    sizes="100vw"
+                                    alt="aerial photography of islands during daytime"
+                                    width="1080"
+                                    height="606"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="rb-lazy m-auto"
+                                    fetchpriority="auto"
+                                />
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-12 pb-8">
+                                <h1
+                                    class="text-[40px] leading-tight font-bold text-gray-800 dark:text-white"
+                                >
+                                    Part 2: Wildcard Pages with Content SDK: Item Resolver
+                                </h1>
+                                <div class="flex items-center space-x-2">
+                                    <img
+                                        src="https://assets.reactbricks.com/images/avatars/8WGgCcvUmqH1jtn.jpg"
+                                        alt="Author"
+                                        class="rounded-full w-10 h-10"
+                                    />
+                                    <div>
+                                        <div
+                                            class="text-sm leading-4 font-bold text-gray-800 dark:text-white"
+                                        >
+                                            Robert<!-- -->
+                                            <!-- -->Watson
+                                        </div>
+                                        <div
+                                            class="text-xs leading-4 mt-0.5 text-gray-500 dark:text-white"
+                                        >
+                                            October 30, 2025
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <h2
+                                    class="text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2"
+                                >
+                                    Intro
+                                </h2>
+                                <p
+                                    class="text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100"
+                                >
+                                    Picking up from the custom sitemap work in
+                                    <a
+                                        href="https://www.idksitecore.com/blog/post/custom-sitemap-content-sdk"
+                                        target="_blank"
+                                        class="inline-block text-sky-500 hover:text-sky-600 font-bold hover:-translate-y-px hover:underline transition-all ease-out duration-150"
+                                        rel="noopener"
+                                        >Part 1</a
+                                    >, this walkthrough shows how to turn those
+                                    <code
+                                        style="
+                                            margin: 0 1px;
+                                            display: inline-block;
+                                            padding: 3px 6px;
+                                            font-size: 0.875rem;
+                                            line-height: 1.25;
+                                            max-width: 100%;
+                                            font-family:
+                                                Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                'Courier New', monospace;
+                                            border-radius: 3px;
+                                            background-color: #f5f7f9;
+                                        "
+                                        >/shop/{product}</code
+                                    >
+                                    URLs into fully fledged product detail pages backed by Sitecore.
+                                    The goal: use a wildcard item in Sitecore, have the Content SDK
+                                    resolve it, and hydrate downstream components with product data
+                                    pulled from the middleware. This way, we can use the product
+                                    data gathered from an API and serve it to child components
+                                    rendered onto the page.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <h2
+                                    class="text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2"
+                                >
+                                    Step 1: Create the wildcard detail route
+                                </h2>
+                                <ul
+                                    class="list-disc list-outside ml-5 mt-4 text-gray-800 dark:text-gray-200"
+                                >
+                                    <li>
+                                        In your XM content tree, add a child under
+                                        <code
+                                            style="
+                                                margin: 0 1px;
+                                                display: inline-block;
+                                                padding: 3px 6px;
+                                                font-size: 0.875rem;
+                                                line-height: 1.25;
+                                                max-width: 100%;
+                                                font-family:
+                                                    Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                    'Courier New', monospace;
+                                                border-radius: 3px;
+                                                background-color: #f5f7f9;
+                                            "
+                                            >/sitecore/content/&lt;site&gt;/Home/shop</code
+                                        >
+                                        named ,<code
+                                            style="
+                                                margin: 0 1px;
+                                                display: inline-block;
+                                                padding: 3px 6px;
+                                                font-size: 0.875rem;
+                                                line-height: 1.25;
+                                                max-width: 100%;
+                                                font-family:
+                                                    Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                    'Courier New', monospace;
+                                                border-radius: 3px;
+                                                background-color: #f5f7f9;
+                                            "
+                                            >*</code
+                                        >
+                                        (or your preferred wildcard token) using the same template
+                                        as your product detail page.
+                                    </li>
+                                    <li>
+                                        Set Layout/Presentation as usual so the rendering tree
+                                        mirrors a normal detail item.
+                                    </li>
+                                    <li>
+                                        This item will handle any
+                                        <code
+                                            style="
+                                                margin: 0 1px;
+                                                display: inline-block;
+                                                padding: 3px 6px;
+                                                font-size: 0.875rem;
+                                                line-height: 1.25;
+                                                max-width: 100%;
+                                                font-family:
+                                                    Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                    'Courier New', monospace;
+                                                border-radius: 3px;
+                                                background-color: #f5f7f9;
+                                            "
+                                            >/shop/{slug}</code
+                                        >
+                                        request once the SDK rewrites the path.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <h2
+                                    class="text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2"
+                                >
+                                    Expose product data via the middleware
+                                </h2>
+                                <p
+                                    class="text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100"
+                                >
+                                    I created a generated list of 10 products for demo purposes but
+                                    normally this would come from whichever commerce product you
+                                    choose shuch as Order Cloud.
+                                </p>
+                                <ul
+                                    class="list-disc list-outside ml-5 mt-4 text-gray-800 dark:text-gray-200"
+                                >
+                                    <li>
+                                        ProductsMiddleware now serves <strong>GET </strong
+                                        ><code
+                                            style="
+                                                margin: 0 1px;
+                                                display: inline-block;
+                                                padding: 3px 6px;
+                                                font-size: 0.875rem;
+                                                line-height: 1.25;
+                                                max-width: 100%;
+                                                font-family:
+                                                    Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                    'Courier New', monospace;
+                                                border-radius: 3px;
+                                                background-color: #f5f7f9;
+                                            "
+                                            >/api/products</code
+                                        >
+                                        and <strong>GET </strong
+                                        ><code
+                                            style="
+                                                margin: 0 1px;
+                                                display: inline-block;
+                                                padding: 3px 6px;
+                                                font-size: 0.875rem;
+                                                line-height: 1.25;
+                                                max-width: 100%;
+                                                font-family:
+                                                    Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                    'Courier New', monospace;
+                                                border-radius: 3px;
+                                                background-color: #f5f7f9;
+                                            "
+                                            >/api/products?name={slug}</code
+                                        >
+                                        returning
+                                        <code
+                                            style="
+                                                margin: 0 1px;
+                                                display: inline-block;
+                                                padding: 3px 6px;
+                                                font-size: 0.875rem;
+                                                line-height: 1.25;
+                                                max-width: 100%;
+                                                font-family:
+                                                    Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                    'Courier New', monospace;
+                                                border-radius: 3px;
+                                                background-color: #f5f7f9;
+                                            "
+                                            >{ products: Product[] }</code
+                                        >.
+                                    </li>
+                                    <li>
+                                        <code
+                                            style="
+                                                margin: 0 1px;
+                                                display: inline-block;
+                                                padding: 3px 6px;
+                                                font-size: 0.875rem;
+                                                line-height: 1.25;
+                                                max-width: 100%;
+                                                font-family:
+                                                    Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                    'Courier New', monospace;
+                                                border-radius: 3px;
+                                                background-color: #f5f7f9;
+                                            "
+                                            >ProductExample.tsx</code
+                                        >
+                                        reads
+                                        <code
+                                            style="
+                                                margin: 0 1px;
+                                                display: inline-block;
+                                                padding: 3px 6px;
+                                                font-size: 0.875rem;
+                                                line-height: 1.25;
+                                                max-width: 100%;
+                                                font-family:
+                                                    Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                    'Courier New', monospace;
+                                                border-radius: 3px;
+                                                background-color: #f5f7f9;
+                                            "
+                                            >CONSTANTS.CONTEXT.PRODUCT_DETAIL</code
+                                        >
+                                        from
+                                        <code
+                                            style="
+                                                margin: 0 1px;
+                                                display: inline-block;
+                                                padding: 3px 6px;
+                                                font-size: 0.875rem;
+                                                line-height: 1.25;
+                                                max-width: 100%;
+                                                font-family:
+                                                    Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                    'Courier New', monospace;
+                                                border-radius: 3px;
+                                                background-color: #f5f7f9;
+                                            "
+                                            >clientData</code
+                                        >, so any page that sets that value can surface rich product
+                                        UI.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <h2
+                                    class="text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2"
+                                >
+                                    Teach the Sitecore client to hydrate products
+                                </h2>
+                                <p
+                                    class="text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100"
+                                >
+                                    With the wildcard item in place, extend the custom Sitecore
+                                    client so
+                                    <code
+                                        style="
+                                            margin: 0 1px;
+                                            display: inline-block;
+                                            padding: 3px 6px;
+                                            font-size: 0.875rem;
+                                            line-height: 1.25;
+                                            max-width: 100%;
+                                            font-family:
+                                                Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                'Courier New', monospace;
+                                            border-radius: 3px;
+                                            background-color: #f5f7f9;
+                                        "
+                                        >/shop</code
+                                    >
+                                    routes lookup the product before loading the page. The snippet
+                                    below lives in
+                                    <code
+                                        style="
+                                            margin: 0 1px;
+                                            display: inline-block;
+                                            padding: 3px 6px;
+                                            font-size: 0.875rem;
+                                            line-height: 1.25;
+                                            max-width: 100%;
+                                            font-family:
+                                                Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                'Courier New', monospace;
+                                            border-radius: 3px;
+                                            background-color: #f5f7f9;
+                                        "
+                                        >src/lib/client/sitecore-client.ts</code
+                                    >
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <h2
+                                    class="text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2"
+                                >
+                                    Example Usage in a Component
+                                </h2>
+                                <p
+                                    class="text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100"
+                                >
+                                    Components can now read that product directly from context.
+                                    <code
+                                        style="
+                                            margin: 0 1px;
+                                            display: inline-block;
+                                            padding: 3px 6px;
+                                            font-size: 0.875rem;
+                                            line-height: 1.25;
+                                            max-width: 100%;
+                                            font-family:
+                                                Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                'Courier New', monospace;
+                                            border-radius: 3px;
+                                            background-color: #f5f7f9;
+                                        "
+                                        >src/components/demo-4/ProductExample.tsx</code
+                                    >
+                                    demonstrates a full product detail card without any extra
+                                    fetches:
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <p
+                                    class="text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100"
+                                >
+                                    Because the Sitecore client already performed the lookup,
+                                    ProductExample stays purely presentational and can be dropped
+                                    anywhere on the wildcard page�s rendering tree.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <h2
+                                    class="text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2"
+                                >
+                                    Another Example for Metadata
+                                </h2>
+                                <p
+                                    class="text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100"
+                                >
+                                    The same hydrated product powers page-level metadata.
+                                    <code
+                                        style="
+                                            margin: 0 1px;
+                                            display: inline-block;
+                                            padding: 3px 6px;
+                                            font-size: 0.875rem;
+                                            line-height: 1.25;
+                                            max-width: 100%;
+                                            font-family:
+                                                Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                'Courier New', monospace;
+                                            border-radius: 3px;
+                                            background-color: #f5f7f9;
+                                        "
+                                        >src/sub-components/demo-4/MetaLinks.tsx</code
+                                    >
+                                    checks for the product in context and emits product-specific
+                                    tags:
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <p
+                                    class="text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100"
+                                >
+                                    Drop MetaLinks into the wildcard item�s presentation details and
+                                    every product page inherits rich Open Graph and product schema
+                                    tags without custom authoring per item. This is especially
+                                    useful for Sitemap crawlers for Search Engines such as Coveo
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <h2
+                                    class="text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2"
+                                >
+                                    Key moves:
+                                </h2>
+                                <ul
+                                    class="list-disc list-outside ml-5 mt-4 text-gray-800 dark:text-gray-200"
+                                >
+                                    <li>
+                                        Intercept getPage whenever the incoming URL starts with
+                                        /shop.
+                                    </li>
+                                    <li>
+                                        Pull the slug, call the commerce middleware, and
+                                        short-circuit with null to trigger a 404 if the product is
+                                        missing.
+                                    </li>
+                                    <li>
+                                        Ask Sitecore for
+                                        <code
+                                            style="
+                                                margin: 0 1px;
+                                                display: inline-block;
+                                                padding: 3px 6px;
+                                                font-size: 0.875rem;
+                                                line-height: 1.25;
+                                                max-width: 100%;
+                                                font-family:
+                                                    Menlo, Monaco, Consolas, 'Liberation Mono',
+                                                    'Courier New', monospace;
+                                                border-radius: 3px;
+                                                background-color: #f5f7f9;
+                                            "
+                                            >/shop/,-w-</code
+                                        >,�the wildcard route�so the rendering tree stays consistent
+                                        with authoring expectations.
+                                    </li>
+                                    <li>
+                                        Attach the product JSON to clientData so any layout
+                                        component can subscribe to it (in this repo, ProductExample
+                                        does).
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <h2
+                                    class="text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2"
+                                >
+                                    Wire it up in Next.js
+                                </h2>
+                                <ul
+                                    class="list-disc list-outside ml-5 mt-4 text-gray-800 dark:text-gray-200"
+                                >
+                                    <li>
+                                        Components like ProductExample should be added to the
+                                        wildcard item�s rendering layout. They can now render
+                                        titles, media, price, and reviews pulled live from
+                                        clientData.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <h2
+                                    class="text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2"
+                                >
+                                    Testing the flow
+                                </h2>
+                                <ol
+                                    class="list-decimal list-outside ml-5 mt-4 text-gray-800 dark:text-gray-200"
+                                >
+                                    <li>
+                                        Start the Next.js app and visit
+                                        /shop/aurora-bamboo-desk-lamp.
+                                    </li>
+                                    <li>The sitemap entry ensures the link exists.</li>
+                                    <li>
+                                        IdkSitecoreClient finds the product by slug, injects it into
+                                        the page, and the React component renders the full card.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-white dark:bg-gray-900 relative">
+                        <div class="absolute inset-0"></div>
+                        <div class="relative">
+                            <div class="px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0">
+                                <h2
+                                    class="text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2"
+                                >
+                                    Conclusion
+                                </h2>
+                                <p
+                                    class="text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100"
+                                >
+                                    In a handful of touches�middleware, Sitecore client, and two
+                                    components�we turned the sitemap links into fully hydrated
+                                    product pages. Authors keep working with a single wildcard item,
+                                    while the Content SDK handles the rest. As always, you can view
+                                    the code sample
+                                    <a
+                                        href="https://github.com/the-real-bro-grammer/content-sdk-demo-ssr"
+                                        target="_blank"
+                                        class="inline-block text-sky-500 hover:text-sky-600 font-bold hover:-translate-y-px hover:underline transition-all ease-out duration-150"
+                                        rel="noopener"
+                                        >here</a
+                                    >
+                                    on my Public GitHub Profile. Happy Coding!
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <style>
+                        .cil14c {
+                            display: block;
+                            position: fixed;
+                            box-sizing: border-box;
+                            z-index: 999;
+                            bottom: 20px;
+                            left: 20px;
+                            padding: 5px 12px;
+                            background-color: #ffffffdd;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            color: #1e293b;
+                            font-size: 11px;
+                            font-weight: 600;
+                            border: 1px solid #e2e8f0cc;
+                            border-radius: 20px;
+                            text-transform: uppercase;
+                            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                            filter: none;
+                            transition: all 300ms ease;
+                        }
+                        .cil14c:hover {
+                            background-color: #ffffff;
+                            filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
+                                drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+                        }
+                        .cil14c .l {
+                            transition: color 300ms ease;
+                        }
+                        .cil14c:hover .l {
+                            color: #f65a8e;
+                        }</style
+                    ><a
+                        href="https://reactbricks.com?utm_campaign=site-badge"
+                        target="_blank"
+                        class="cil14c"
+                        ><img
+                            src="https://reactbricks.com/_next/static/media/reactbricks_icon.c57a7be4.svg"
+                            style="width: 18px; height: 18px; margin-right: 6px"
+                        /><span>Made in <span class="l">React Bricks</span></span></a
+                    ><!--$--><!--/$-->
+                    <footer>
+                        <section class="bg-gray-50 dark:bg-gray-900 relative">
+                            <div class="absolute inset-0"></div>
+                            <div class="pt-0 pb-0">
+                                <hr class="border-black/10 dark:border-white/20 relative" />
+                            </div>
+                            <div class="relative">
+                                <div
+                                    class="px-5 sm:mx-[5.55555%] xl:mx-[11.1111%] pt-12 lg:pt-16 pb-12 lg:pb-16 flex justify-between flex-wrap"
+                                >
+                                    <div class="w-full mb-12 lg:w-auto lg:mb-0 lg:mr-8">
+                                        <a href="" class="block mb-4"
+                                            ><img
+                                                src="https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/original/USMpFQDZDwSDHYa/idk-sitecore-transparent.webp"
+                                                srcset="
+                                                    https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-250/idk-sitecore-transparent.webp 250w,
+                                                    https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-150/idk-sitecore-transparent.webp 150w,
+                                                    https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-75/idk-sitecore-transparent.webp   75w
+                                                "
+                                                sizes="100vw"
+                                                alt="IDK Sitecore"
+                                                width="250"
+                                                height="50"
+                                                loading="eager"
+                                                decoding="async"
+                                                class="rb-lazy w-48 h-7 object-contain object-left"
+                                                fetchpriority="high"
+                                        /></a>
+                                        <p class="text-sm text-gray-500 dark:text-white">
+                                            � 2025 IDK Sitecore
+                                        </p>
+                                        <p class="text-sm text-gray-500 dark:text-white">
+                                            Built by a dev who just wants to help
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </footer>
+                </main>
+            </div>
+        </main>
+        <script src="/_next/static/chunks/webpack-aaeec7bc42122ea2.js" async=""></script>
+        <script>
+            (self.__next_f = self.__next_f || []).push([0]);
+        </script>
+        <script>
+            self.__next_f.push([
+                1,
+                '1:"$Sreact.fragment"\n2:I[87555,[],""]\n3:I[31295,[],""]\n6:I[59665,[],"OutletBoundary"]\n9:I[74911,[],"AsyncMetadataOutlet"]\nb:I[59665,[],"ViewportBoundary"]\nd:I[59665,[],"MetadataBoundary"]\nf:I[26614,[],""]\n10:"$Sreact.suspense"\n11:I[74911,[],"AsyncMetadata"]\n:HL["/_next/static/css/ac374cd9a5cf9473.css","style"]\n:HL["/_next/static/css/b67d904662641e59.css","style"]\n:HL["/_next/static/css/703c5c3201c7891e.css","style"]\n:HL["/_next/static/css/7688fac2772ee7d3.css","style"]\n:HL["/_next/static/css/931eb87cdef03851.css","style"]\n',
+            ]);
+        </script>
+        <script>
+            self.__next_f.push([
+                1,
+                '0:{"P":null,"b":"Cmg96Ayj7UH5rAQy7ztpR","p":"","c":["","preview?p=kFrW5v2Qubp3pcKsNn2ScJmmIm44J8zuWggB0J9jkI89kj7QbseT2FpjEIagRSzeGGVa5r73KFFd6Ftp6.p6h"],"i":false,"f":[[["",{"children":["preview",{"children":["__PAGE__?{\\"p\\":\\"kFrW5v2Qubp3pcKsNn2ScJmmIm44J8zuWggB0J9jkI89kj7QbseT2FpjEIagRSzeGGVa5r73KFFd6Ftp6.p6h\\"}",{}]},"$undefined","$undefined",true]}],["",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\\"Segoe UI\\",Roboto,Helvetica,Arial,sans-serif,\\"Apple Color Emoji\\",\\"Segoe UI Emoji\\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["preview",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/ac374cd9a5cf9473.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/b67d904662641e59.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/703c5c3201c7891e.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","3",{"rel":"stylesheet","href":"/_next/static/css/7688fac2772ee7d3.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","4",{"rel":"stylesheet","href":"/_next/static/css/931eb87cdef03851.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],"$L4"]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7","$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","ZdFQ93GphlpY6mlCEAjJQv",{"children":[["$","$Lb",null,{"children":"$Lc"}],null]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":false}\n',
+            ]);
+        </script>
+        <script>
+            self.__next_f.push([
+                1,
+                'e:["$","div",null,{"hidden":true,"children":["$","$10",null,{"fallback":null,"children":["$","$L11",null,{"promise":"$@12"}]}]}]\n8:null\nc:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]\n7:null\n',
+            ]);
+        </script>
+        <script>
+            self.__next_f.push([
+                1,
+                '13:I[34806,["8087","static/chunks/0e762574-bf4b7ff06e15aac3.js","844","static/chunks/ee560e2c-d478646c4b795648.js","2749","static/chunks/2749-6576905c0016a78b.js","4301","static/chunks/4301-5ea4646eb4fc0492.js","4357","static/chunks/4357-ad223617e01f2460.js","9517","static/chunks/app/preview/page-7b79a0f5b72ec13d.js"],"RegisterComponent"]\n14:I[44496,["8087","static/chunks/0e762574-bf4b7ff06e15aac3.js","844","static/chunks/ee560e2c-d478646c4b795648.js","2749","static/chunks/2749-6576905c0016a78b.js","4301","static/chunks/4301-5ea4646eb4fc0492.js","4357","static/chunks/4357-ad223617e01f2460.js","9517","static/chunks/app/preview/page-7b79a0f5b72ec13d.js"],"default"]\n15:I[34806,["8087","static/chunks/0e762574-bf4b7ff06e15aac3.js","844","static/chunks/ee560e2c-d478646c4b795648.js","2749","static/chunks/2749-6576905c0016a78b.js","4301","static/chunks/4301-5ea4646eb4fc0492.js","4357","static/chunks/4357-ad223617e01f2460.js","9517","static/chunks/app/preview/page-7b79a0f5b72ec13d.js"],"ClickToEdit"]\n16:I[89241,["8087","static/chunks/0e762574-bf4b7ff06e15aac3.js","844","static/chunks/ee560e2c-d478646c4b795648.js","6711","static/chunks/8e1d74a4-716c73838d384aa2.js","3380","static/chunks/479ba886-62516d63cd331381.js","7753","static/chunks/fc2f6fa8-34fae623aa7b2bca.js","2749","static/chunks/2749-6576905c0016a78b.js","4301","static/chunks/4301-5ea4646eb4fc0492.js","3098","static/chunks/3098-89539c01a50cdb73.js","4357","static/chunks/4357-ad223617e01f2460.js","6982","static/chunks/6982-b71fa6e58d3a9908.js","9646","static/chunks/app/preview/layout-55d20384f58083ad.js"],"ThemeProvider"]\n17:I[61203,["8087","static/chunks/0e762574-bf4b7ff06e15aac3.js","844","static/chunks/ee560e2c-d478646c4b795648.js","6711","static/chunks/8e1d74a4-716c73838d384aa2.js","3380","static/chunks/479ba886-62516d63cd331381.js","7753","static/chunks/fc2f6fa8-34fae623aa7b2bca.js","2749","static/chunks/2749-6576905c0016a78b.js","4301","static/chunks/4301-5ea4646eb4fc0492.js","3098","static/chunks/3098-89539c01a50cdb73.js","4357","static/chunks/4357-ad223617',
+            ]);
+        </script>
+        <script>
+            self.__next_f.push([
+                1,
+                'e01f2460.js","6982","static/chunks/6982-b71fa6e58d3a9908.js","9646","static/chunks/app/preview/layout-55d20384f58083ad.js"],"default"]\n18:I[93647,["8087","static/chunks/0e762574-bf4b7ff06e15aac3.js","844","static/chunks/ee560e2c-d478646c4b795648.js","2749","static/chunks/2749-6576905c0016a78b.js","4301","static/chunks/4301-5ea4646eb4fc0492.js","4357","static/chunks/4357-ad223617e01f2460.js","9517","static/chunks/app/preview/page-7b79a0f5b72ec13d.js"],"default"]\n19:I[5813,["8087","static/chunks/0e762574-bf4b7ff06e15aac3.js","844","static/chunks/ee560e2c-d478646c4b795648.js","2749","static/chunks/2749-6576905c0016a78b.js","4301","static/chunks/4301-5ea4646eb4fc0492.js","4357","static/chunks/4357-ad223617e01f2460.js","9517","static/chunks/app/preview/page-7b79a0f5b72ec13d.js"],"default"]\n1a:I[92034,["8087","static/chunks/0e762574-bf4b7ff06e15aac3.js","844","static/chunks/ee560e2c-d478646c4b795648.js","2749","static/chunks/2749-6576905c0016a78b.js","4301","static/chunks/4301-5ea4646eb4fc0492.js","4357","static/chunks/4357-ad223617e01f2460.js","9517","static/chunks/app/preview/page-7b79a0f5b72ec13d.js"],"ItemMenuClient"]\n1b:I[33397,["8087","static/chunks/0e762574-bf4b7ff06e15aac3.js","844","static/chunks/ee560e2c-d478646c4b795648.js","2749","static/chunks/2749-6576905c0016a78b.js","4301","static/chunks/4301-5ea4646eb4fc0492.js","4357","static/chunks/4357-ad223617e01f2460.js","9517","static/chunks/app/preview/page-7b79a0f5b72ec13d.js"],"default"]\n',
+            ]);
+        </script>
+        <script>
+            self.__next_f.push([
+                1,
+                '5:[null,[[["$","section","4704899f-cfff-42ab-a02c-77b078e74cdc-0",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-12 pb-12 flex m-auto","children":["$","img",null,{"src":"https://images.reactbricks.com/original/71fd29e5-d54d-4c99-a2da-681bd8d888d1/seaside.webp","srcSet":"https://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-1080/seaside.webp 1080w, https://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-600/seaside.webp 600w, https://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-300/seaside.webp 300w","sizes":"100vw","alt":"aerial photography of islands during daytime","width":"1080","height":"606","loading":"lazy","decoding":"async","className":"rb-lazy m-auto","style":{},"fetchPriority":"auto"}]}]}],false]}],["$","section","9e3c3da6-337c-43c1-b01b-75246f86a6ae-1",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-12 pb-8","children":[[["$","$1","0",{"children":["$","h1",null,{"className":"text-[40px] leading-tight font-bold text-gray-800 dark:text-white","children":[["$","$1","0",{"children":"Part 2: Wildcard Pages with Content SDK: Item Resolver"}]]}]}]],null,["$","div",null,{"className":"flex items-center space-x-2","children":[["$","img",null,{"src":"https://assets.reactbricks.com/images/avatars/8WGgCcvUmqH1jtn.jpg","alt":"Author","className":"rounded-full w-10 h-10"}],["$","div",null,{"children":[["$","div",null,{"className":"text-sm leading-4 font-bold text-gray-800 dark:text-white","children":["Robert"," ","Watson"]}],["$","div",null,{"className":"text-xs leading-4 mt-0.5 text-gray-500 dark:text-white","children":"October 30, 2025"}]]}]]}]]}]}],false]}],["$","section","090af332-4aea-408f-a431-081b6d062854-2",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","h2",null,{"className":"text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2","children":[["$","$1","0",{"children":"Intro"}]]}]}],["$","$1","1",{"children":["$","p",null,{"className":"text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100","children":[["$","$1","0",{"children":"Picking up from the custom sitemap work in "}],["$","$1","1",{"children":["$","a",null,{"href":"https://www.idksitecore.com/blog/post/custom-sitemap-content-sdk","target":"_blank","className":"inline-block text-sky-500 hover:text-sky-600 font-bold hover:-translate-y-px hover:underline transition-all ease-out duration-150","rel":"noopener","children":[["$","$1","0",{"children":"Part 1"}]]}]}],["$","$1","2",{"children":", this walkthrough shows how to turn those "}],["$","$1","3",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"/shop/{product}"}]}],["$","$1","4",{"children":" URLs into fully fledged product detail pages backed by Sitecore. The goal: use a wildcard item in Sitecore, have the Content SDK resolve it, and hydrate downstream components with product data pulled from the middleware. This way, we can use the product data gathered from an API and serve it to child components rendered onto the page."}]]}]}]]}]}],false]}],["$","section","47d3524b-d04f-4147-ad5b-fa87a9e7d936-3",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","h2",null,{"className":"text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2","children":[["$","$1","0",{"children":"Step 1: Create the wildcard detail route"}]]}]}],["$","$1","1",{"children":["$","ul",null,{"className":"list-disc list-outside ml-5 mt-4 text-gray-800 dark:text-gray-200","children":[["$","$1","0",{"children":["$","li",null,{"children":["$","$1","0",{"children":[["$","$1","0",{"children":"In your XM content tree, add a child under "}],["$","$1","1",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"/sitecore/content/\u003csite\u003e/Home/shop"}]}],["$","$1","2",{"children":" named ,"}],["$","$1","3",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"*"}]}],["$","$1","4",{"children":" (or your preferred wildcard token) using the same template as your product detail page."}]]}]}]}],["$","$1","1",{"children":["$","li",null,{"children":["$","$1","1",{"children":[["$","$1","0",{"children":"Set Layout/Presentation as usual so the rendering tree mirrors a normal detail item."}]]}]}]}],["$","$1","2",{"children":["$","li",null,{"children":["$","$1","2",{"children":[["$","$1","0",{"children":"This item will handle any "}],["$","$1","1",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"/shop/{slug}"}]}],["$","$1","2",{"children":" request once the SDK rewrites the path."}]]}]}]}]]}]}]]}]}],false]}],["$","section","76fa0bb2-d4a4-4fb4-93a2-beb19631536b-4",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","h2",null,{"className":"text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2","children":[["$","$1","0",{"children":"Expose product data via the middleware"}]]}]}],["$","$1","1",{"children":["$","p",null,{"className":"text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100","children":[["$","$1","0",{"children":"I created a generated list of 10 products for demo purposes but normally this would come from whichever commerce product you choose shuch as Order Cloud. "}]]}]}],["$","$1","2",{"children":["$","ul",null,{"className":"list-disc list-outside ml-5 mt-4 text-gray-800 dark:text-gray-200","children":[["$","$1","0",{"children":["$","li",null,{"children":["$","$1","0",{"children":[["$","$1","0",{"children":"ProductsMiddleware now serves "}],["$","$1","1",{"children":["$","strong",null,{"children":"GET "}]}],["$","$1","2",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"/api/products"}]}],["$","$1","3",{"children":" and "}],["$","$1","4",{"children":["$","strong",null,{"children":"GET "}]}],["$","$1","5",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"/api/products?name={slug}"}]}],["$","$1","6",{"children":" returning "}],["$","$1","7",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"{ products: Product[] }"}]}],["$","$1","8",{"children":"."}]]}]}]}],["$","$1","1",{"children":["$","li",null,{"children":["$","$1","1",{"children":[["$","$1","0",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"ProductExample.tsx"}]}],["$","$1","1",{"children":" reads "}],["$","$1","2",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"CONSTANTS.CONTEXT.PRODUCT_DETAIL"}]}],["$","$1","3",{"children":" from "}],["$","$1","4",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"clientData"}]}],["$","$1","5",{"children":", so any page that sets that value can surface rich product UI."}]]}]}]}]]}]}]]}]}],false]}],["$","section","b4238cd1-d086-4fb9-936c-c648d5196088-5",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","h2",null,{"className":"text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2","children":[["$","$1","0",{"children":"Teach the Sitecore client to hydrate products"}]]}]}],["$","$1","1",{"children":["$","p",null,{"className":"text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100","children":[["$","$1","0",{"children":"With the wildcard item in place, extend the custom Sitecore client so "}],["$","$1","1",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"/shop"}]}],["$","$1","2",{"children":" routes lookup the product before loading the page. The snippet below lives in "}],["$","$1","3",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"src/lib/client/sitecore-client.ts"}]}]]}]}]]}]}],false]}],["$","$1","0fe0154b-e63b-48ac-8220-3e398464115d-6",{"children":[["$","$L13",null,{"___type":"RegisterComponent","page":{"language":"en","name":"Part 2: Wildcard Pages with Content SDK: Item Resolver","slug":"wildcard-pages-with-content-sdk-item-resolver","meta":{"title":"Part 2: Wildcard Pages with Content SDK: Item Resolver","description":"","language":"en"},"type":"blog","category":null,"contentVersion":2,"content":[{"id":"4704899f-cfff-42ab-a02c-77b078e74cdc","type":"big-image","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"12","paddingBottom":"12","borderTop":"none","borderBottom":"none","width":"small","image":{"fallbackSrc":"https://images.reactbricks.com/original/71fd29e5-d54d-4c99-a2da-681bd8d888d1.jpg","fallbackSrcSet":"https://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-1080.jpg 1080w,\\nhttps://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-600.jpg 600w,\\nhttps://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-300.jpg 300w","fallbackType":"image/jpeg","src":"https://images.reactbricks.com/original/71fd29e5-d54d-4c99-a2da-681bd8d888d1.webp","placeholderSrc":"https://images.reactbricks.com/placeholder/71fd29e5-d54d-4c99-a2da-681bd8d888d1.jpg","srcSet":"https://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-1080.webp 1080w,\\nhttps://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-600.webp 600w,\\nhttps://images.reactbricks.com/src_set/71fd29e5-d54d-4c99-a2da-681bd8d888d1-300.webp 300w","width":1080,"height":606,"alt":"aerial photography of islands during daytime","seoName":"seaside"}}},{"id":"9e3c3da6-337c-43c1-b01b-75246f86a6ae","type":"blog-title","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"12","paddingBottom":"8","borderTop":"none","borderBottom":"none","width":"small","title":"A new fresh post","subtitle":"With a beautiful subtitle"}},{"id":"090af332-4aea-408f-a431-081b6d062854","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"h2","children":[{"text":"Intro"}]},{"type":"paragraph","children":[{"text":"Picking up from the custom sitemap work in "},{"type":"link","data":{"url":"https://www.idksitecore.com/blog/post/custom-sitemap-content-sdk","isTargetBlank":true},"children":[{"text":"Part 1"}]},{"text":", this walkthrough shows how to turn those "},{"text":"/shop/{product}","code":true},{"text":" URLs into fully fledged product detail pages backed by Sitecore. The goal: use a wildcard item in Sitecore, have the Content SDK resolve it, and hydrate downstream components with product data pulled from the middleware. This way, we can use the product data gathered from an API and serve it to child components rendered onto the page."}]}]}},{"id":"47d3524b-d04f-4147-ad5b-fa87a9e7d936","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"h2","children":[{"text":"Step 1: Create the wildcard detail route"}]},{"type":"ul","children":[{"type":"li","children":[{"text":"In your XM content tree, add a child under "},{"text":"/sitecore/content/\u003csite\u003e/Home/shop","code":true},{"text":" named ,"},{"text":"*","code":true},{"text":" (or your preferred wildcard token) using the same template as your product detail page."}]},{"type":"li","children":[{"text":"Set Layout/Presentation as usual so the rendering tree mirrors a normal detail item."}]},{"type":"li","children":[{"text":"This item will handle any "},{"text":"/shop/{slug}","code":true},{"text":" request once the SDK rewrites the path."}]}]}]}},{"id":"76fa0bb2-d4a4-4fb4-93a2-beb19631536b","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"h2","children":[{"text":"Expose product data via the middleware"}]},{"type":"paragraph","children":[{"text":"I created a generated list of 10 products for demo purposes but normally this would come from whichever commerce product you choose shuch as Order Cloud. "}]},{"type":"ul","children":[{"type":"li","children":[{"text":"ProductsMiddleware now serves "},{"text":"GET ","bold":true},{"text":"/api/products","code":true},{"text":" and "},{"text":"GET ","bold":true},{"text":"/api/products?name={slug}","code":true},{"text":" returning "},{"text":"{ products: Product[] }","code":true},{"text":"."}]},{"type":"li","children":[{"text":"ProductExample.tsx","code":true},{"text":" reads "},{"text":"CONSTANTS.CONTEXT.PRODUCT_DETAIL","code":true},{"text":" from "},{"text":"clientData","code":true},{"text":", so any page that sets that value can surface rich product UI."}]}]}]}},{"id":"b4238cd1-d086-4fb9-936c-c648d5196088","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"h2","children":[{"text":"Teach the Sitecore client to hydrate products"}]},{"type":"paragraph","children":[{"text":"With the wildcard item in place, extend the custom Sitecore client so "},{"text":"/shop","code":true},{"text":" routes lookup the product before loading the page. The snippet below lives in "},{"text":"src/lib/client/sitecore-client.ts","code":true}]}]}},{"id":"0fe0154b-e63b-48ac-8220-3e398464115d","type":"code","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"1","paddingBottom":"1","borderTop":"none","borderBottom":"none","width":"small","code":"// src/lib/client/sitecore-client.ts (excerpt)\\nconst computedPath = this.parsePath(path);\\nif (computedPath.startsWith(\'/shop\')) {\\n  const productSlug = computedPath.split(\'/\')[2] ?? \'\';\\n  if (!productSlug) return null;\\n\\n  const product = await ProductApi.GetProductByName(productSlug);\\n  if (!product) return null;\\n\\n  const productDetailPage = await super.getPage(\'/shop/,-w-,\', pageOptions, fetchOptions);\\n  if (!productDetailPage) return null;\\n\\n  productDetailPage.layout.sitecore.context.clientData ??= {};\\n  productDetailPage.layout.sitecore.context.clientData[CONSTANTS.CONTEXT.PRODUCT_DETAIL] = product;\\n}\\n","language":"typescript","dataline":"","showLineNumbers":false}},{"id":"b26b7c6d-5dc1-41e6-97cb-d01439bea961","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"h2","children":[{"text":"Example Usage in a Component"}]},{"type":"paragraph","children":[{"text":"Components can now read that product directly from context. "},{"text":"src/components/demo-4/ProductExample.tsx","code":true},{"text":" demonstrates a full product detail card without any extra fetches:"}]}]}},{"id":"b0039128-7939-49ac-ba0f-86b86a492ccc","type":"code","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"1","paddingBottom":"1","borderTop":"none","borderBottom":"none","width":"small","code":"const { page } = useSitecore();\\nconst product = page.layout.sitecore.context.clientData?.[\\n  CONSTANTS.CONTEXT.PRODUCT_DETAIL\\n] as Product | undefined;\\n\\nif (!product) return null;\\n\\nconst priceLabel = new Intl.NumberFormat(\'en-US\', {\\n  style: \'currency\',\\n  currency: product.currency,\\n}).format(product.price);\\n\\nreturn (\\n  \u003carticle className=\\"product-example\\"\u003e\\n    \u003cheader\u003e\\n      \u003cp\u003e\\n        {product.category}\\n        {product.brand ? ` - ${product.brand}` : \'\'}\\n      \u003c/p\u003e\\n      \u003ch2\u003e{product.name}\u003c/h2\u003e\\n      {product.sku ? \u003cp\u003eSKU: {product.sku}\u003c/p\u003e : null}\\n    \u003c/header\u003e\\n    \u003cdiv\u003e\\n      {product.imageUrl ? \u003cimg src={product.imageUrl} alt={product.name} loading=\\"lazy\\" /\u003e : null}\\n      \u003cdiv\u003e\\n        \u003cp\u003e{priceLabel}\u003c/p\u003e\\n        \u003cp\u003e{product.stock \u003e 0 ? `${product.stock} in stock` : \'Currently unavailable\'}\u003c/p\u003e\\n        \u003cp\u003e{product.description}\u003c/p\u003e\\n      \u003c/div\u003e\\n    \u003c/div\u003e\\n  \u003c/article\u003e\\n);\\n","language":"typescript","dataline":"2","showLineNumbers":true}},{"id":"72aa25fc-2c2f-4d7a-9705-076ee55a379b","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"paragraph","children":[{"text":"Because the Sitecore client already performed the lookup, ProductExample stays purely presentational and can be dropped anywhere on the wildcard page�s rendering tree."}]}]}},{"id":"fc05b40b-8d25-4a83-9f5c-4861dc0a2f7a","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"h2","children":[{"text":"Another Example for Metadata"}]},{"type":"paragraph","children":[{"text":"The same hydrated product powers page-level metadata. "},{"text":"src/sub-components/demo-4/MetaLinks.tsx","code":true},{"text":" checks for the product in context and emits product-specific tags:"}]}]}},{"id":"f3f856f7-7904-413a-a9a9-ea71b635b97c","type":"code","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"1","paddingBottom":"1","borderTop":"none","borderBottom":"none","width":"small","code":"const { page } = useSitecore();\\nconst product = page.layout.sitecore.context.clientData?.[\\n  CONSTANTS.CONTEXT.PRODUCT_DETAIL\\n] as Product | undefined;\\n\\nconst metadata = product\\n  ? {\\n      title: `${product.name} | Demo Shop`,\\n      description: product.description,\\n      \'og:type\': \'product\',\\n      \'og:title\': product.name,\\n      \'og:description\': product.description,\\n      \'og:url\': `https://demo.local/shop/${product.slug}`,\\n      \'product:price:amount\': product.price.toString(),\\n      \'product:price:currency\': product.currency,\\n    }\\n  : getPageMetadata(page);\\n\\nreturn metadata ? (\\n  \u003c\u003e\\n    {Object.entries(metadata).map(([key, value]) =\u003e (\\n      \u003cmeta key={key} name={key} content={value} data-next-head /\u003e\\n    ))}\\n  \u003c/\u003e\\n) : null;\\n","language":"typescript","dataline":"","showLineNumbers":false}},{"id":"b5bdb3f1-71bc-4f23-a04f-2df925c3ff0a","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"paragraph","children":[{"text":"Drop MetaLinks into the wildcard item�s presentation details and every product page inherits rich Open Graph and product schema tags without custom authoring per item. This is especially useful for Sitemap crawlers for Search Engines such as Coveo"}]}]}},{"id":"d99dd123-f093-463d-89ee-5765994cc0cc","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"h2","children":[{"text":"Key moves:"}]},{"type":"ul","children":[{"type":"li","children":[{"text":"Intercept getPage whenever the incoming URL starts with /shop."}]},{"type":"li","children":[{"text":"Pull the slug, call the commerce middleware, and short-circuit with null to trigger a 404 if the product is missing."}]},{"type":"li","children":[{"text":"Ask Sitecore for "},{"text":"/shop/,-w-","code":true},{"text":",�the wildcard route�so the rendering tree stays consistent with authoring expectations."}]},{"type":"li","children":[{"text":"Attach the product JSON to clientData so any layout component can subscribe to it (in this repo, ProductExample does)."}]}]}]}},{"id":"ce036fa0-b8f1-4f11-8ffa-e6f5e74446a2","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"h2","children":[{"text":"Wire it up in Next.js"}]},{"type":"ul","children":[{"type":"li","children":[{"text":"Components like ProductExample should be added to the wildcard item�s rendering layout. They can now render titles, media, price, and reviews pulled live from clientData."}]}]}]}},{"id":"5f00de1c-3376-46a6-b92b-e80e432b32ce","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"h2","children":[{"text":"Testing the flow"}]},{"type":"ol","children":[{"type":"li","children":[{"text":"Start the Next.js app and visit /shop/aurora-bamboo-desk-lamp."}]},{"type":"li","children":[{"text":"The sitemap entry ensures the link exists."}]},{"type":"li","children":[{"text":"IdkSitecoreClient finds the product by slug, injects it into the page, and the React component renders the full card."}]}]}]}},{"id":"925f6bc8-490b-4da4-9c5e-5f9e0dbfeb2d","type":"paragraph","props":{"backgroundColor":{"color":"#ffffff","className":"bg-white dark:bg-gray-900"},"paddingTop":"0","paddingBottom":"0","borderTop":"none","borderBottom":"none","width":"small","text":[{"type":"h2","children":[{"text":"Conclusion"}]},{"type":"paragraph","children":[{"text":"In a handful of touches�middleware, Sitecore client, and two components�we turned the sitemap links into fully hydrated product pages. Authors keep working with a single wildcard item, while the Content SDK handles the rest. As always, you can view the code sample "},{"type":"link","data":{"url":"https://github.com/the-real-bro-grammer/content-sdk-demo-ssr","isTargetBlank":true},"children":[{"text":"here"}]},{"text":" on my Public GitHub Profile. Happy Coding!"}]}]}}],"customValues":{"___t":"MjgzNzQ2MDB8MTc2MTg1ODUzOTIyOHwzMmQ0OWU5YjllMDU3Njg2Yjc0YWViZjg1YWJhZWJkMA==","___p":"MTczNjI4NDV8MTc2MTg1ODUzOTIyOHw0OTU2ZDZjMGY3MTlmMzBlMmU1NTgyN2IzOGVkNzBhMQ=="},"status":"DRAFT","isLocked":false,"createdAt":"2025-10-30T20:39:32.000Z","updatedAt":"2025-10-30T21:08:07.000Z","publishedAt":"2025-10-30T20:39:32.000Z","tags":[],"translations":[{"language":"en","slug":"wildcard-pages-with-content-sdk-item-resolver","name":"Part 2: Wildcard Pages with Content SDK: Item Resolver"}],"id":"5a8893ce-31e8-4073-9e1f-f16c41f8e028","author":{"firstName":"Robert","lastName":"Watson","company":"Tidal Wave Media","avatarUrl":"https://assets.reactbricks.com/images/avatars/8WGgCcvUmqH1jtn.jpg"},"app":{"noindex":false,"hideGeneratorTag":false},"externalData":{},"invalidBlocksTypes":[]},"block":"$5:1:0:6:props:children:0:props:page:content:6"}],["$","$L14",null,{"backgroundColor":"$5:1:0:6:props:children:0:props:page:content:6:props:backgroundColor","paddingTop":"1","paddingBottom":"1","borderTop":"none","borderBottom":"none","width":"small","code":"// src/lib/client/sitecore-client.ts (excerpt)\\nconst computedPath = this.parsePath(path);\\nif (computedPath.startsWith(\'/shop\')) {\\n  const productSlug = computedPath.split(\'/\')[2] ?? \'\';\\n  if (!productSlug) return null;\\n\\n  const product = await ProductApi.GetProductByName(productSlug);\\n  if (!product) return null;\\n\\n  const productDetailPage = await super.getPage(\'/shop/,-w-,\', pageOptions, fetchOptions);\\n  if (!productDetailPage) return null;\\n\\n  productDetailPage.layout.sitecore.context.clientData ??= {};\\n  productDetailPage.layout.sitecore.context.clientData[CONSTANTS.CONTEXT.PRODUCT_DETAIL] = product;\\n}\\n","language":"typescript","dataline":"","showLineNumbers":false,"index":"$undefined","itemsCount":"$undefined"}]]}],["$","section","b26b7c6d-5dc1-41e6-97cb-d01439bea961-7",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","h2",null,{"className":"text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2","children":[["$","$1","0",{"children":"Example Usage in a Component"}]]}]}],["$","$1","1",{"children":["$","p",null,{"className":"text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100","children":[["$","$1","0",{"children":"Components can now read that product directly from context. "}],["$","$1","1",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"src/components/demo-4/ProductExample.tsx"}]}],["$","$1","2",{"children":" demonstrates a full product detail card without any extra fetches:"}]]}]}]]}]}],false]}],["$","$1","b0039128-7939-49ac-ba0f-86b86a492ccc-8",{"children":[["$","$L13",null,{"___type":"RegisterComponent","page":"$5:1:0:6:props:children:0:props:page","block":"$5:1:0:6:props:children:0:props:page:content:8"}],["$","$L14",null,{"backgroundColor":"$5:1:0:6:props:children:0:props:page:content:8:props:backgroundColor","paddingTop":"1","paddingBottom":"1","borderTop":"none","borderBottom":"none","width":"small","code":"const { page } = useSitecore();\\nconst product = page.layout.sitecore.context.clientData?.[\\n  CONSTANTS.CONTEXT.PRODUCT_DETAIL\\n] as Product | undefined;\\n\\nif (!product) return null;\\n\\nconst priceLabel = new Intl.NumberFormat(\'en-US\', {\\n  style: \'currency\',\\n  currency: product.currency,\\n}).format(product.price);\\n\\nreturn (\\n  \u003carticle className=\\"product-example\\"\u003e\\n    \u003cheader\u003e\\n      \u003cp\u003e\\n        {product.category}\\n        {product.brand ? ` - ${product.brand}` : \'\'}\\n      \u003c/p\u003e\\n      \u003ch2\u003e{product.name}\u003c/h2\u003e\\n      {product.sku ? \u003cp\u003eSKU: {product.sku}\u003c/p\u003e : null}\\n    \u003c/header\u003e\\n    \u003cdiv\u003e\\n      {product.imageUrl ? \u003cimg src={product.imageUrl} alt={product.name} loading=\\"lazy\\" /\u003e : null}\\n      \u003cdiv\u003e\\n        \u003cp\u003e{priceLabel}\u003c/p\u003e\\n        \u003cp\u003e{product.stock \u003e 0 ? `${product.stock} in stock` : \'Currently unavailable\'}\u003c/p\u003e\\n        \u003cp\u003e{product.description}\u003c/p\u003e\\n      \u003c/div\u003e\\n    \u003c/div\u003e\\n  \u003c/article\u003e\\n);\\n","language":"typescript","dataline":"2","showLineNumbers":true,"index":"$undefined","itemsCount":"$undefined"}]]}],["$","section","72aa25fc-2c2f-4d7a-9705-076ee55a379b-9",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","p",null,{"className":"text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100","children":[["$","$1","0",{"children":"Because the Sitecore client already performed the lookup, ProductExample stays purely presentational and can be dropped anywhere on the wildcard page�s rendering tree."}]]}]}]]}]}],false]}],["$","section","fc05b40b-8d25-4a83-9f5c-4861dc0a2f7a-10",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","h2",null,{"className":"text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2","children":[["$","$1","0",{"children":"Another Example for Metadata"}]]}]}],["$","$1","1",{"children":["$","p",null,{"className":"text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100","children":[["$","$1","0",{"children":"The same hydrated product powers page-level metadata. "}],["$","$1","1",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"src/sub-components/demo-4/MetaLinks.tsx"}]}],["$","$1","2",{"children":" checks for the product in context and emits product-specific tags:"}]]}]}]]}]}],false]}],["$","$1","f3f856f7-7904-413a-a9a9-ea71b635b97c-11",{"children":[["$","$L13",null,{"___type":"RegisterComponent","page":"$5:1:0:6:props:children:0:props:page","block":"$5:1:0:6:props:children:0:props:page:content:11"}],["$","$L14",null,{"backgroundColor":"$5:1:0:6:props:children:0:props:page:content:11:props:backgroundColor","paddingTop":"1","paddingBottom":"1","borderTop":"none","borderBottom":"none","width":"small","code":"const { page } = useSitecore();\\nconst product = page.layout.sitecore.context.clientData?.[\\n  CONSTANTS.CONTEXT.PRODUCT_DETAIL\\n] as Product | undefined;\\n\\nconst metadata = product\\n  ? {\\n      title: `${product.name} | Demo Shop`,\\n      description: product.description,\\n      \'og:type\': \'product\',\\n      \'og:title\': product.name,\\n      \'og:description\': product.description,\\n      \'og:url\': `https://demo.local/shop/${product.slug}`,\\n      \'product:price:amount\': product.price.toString(),\\n      \'product:price:currency\': product.currency,\\n    }\\n  : getPageMetadata(page);\\n\\nreturn metadata ? (\\n  \u003c\u003e\\n    {Object.entries(metadata).map(([key, value]) =\u003e (\\n      \u003cmeta key={key} name={key} content={value} data-next-head /\u003e\\n    ))}\\n  \u003c/\u003e\\n) : null;\\n","language":"typescript","dataline":"","showLineNumbers":false,"index":"$undefined","itemsCount":"$undefined"}]]}],["$","section","b5bdb3f1-71bc-4f23-a04f-2df925c3ff0a-12",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","p",null,{"className":"text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100","children":[["$","$1","0",{"children":"Drop MetaLinks into the wildcard item�s presentation details and every product page inherits rich Open Graph and product schema tags without custom authoring per item. This is especially useful for Sitemap crawlers for Search Engines such as Coveo"}]]}]}]]}]}],false]}],["$","section","d99dd123-f093-463d-89ee-5765994cc0cc-13",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","h2",null,{"className":"text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2","children":[["$","$1","0",{"children":"Key moves:"}]]}]}],["$","$1","1",{"children":["$","ul",null,{"className":"list-disc list-outside ml-5 mt-4 text-gray-800 dark:text-gray-200","children":[["$","$1","0",{"children":["$","li",null,{"children":["$","$1","0",{"children":[["$","$1","0",{"children":"Intercept getPage whenever the incoming URL starts with /shop."}]]}]}]}],["$","$1","1",{"children":["$","li",null,{"children":["$","$1","1",{"children":[["$","$1","0",{"children":"Pull the slug, call the commerce middleware, and short-circuit with null to trigger a 404 if the product is missing."}]]}]}]}],["$","$1","2",{"children":["$","li",null,{"children":["$","$1","2",{"children":[["$","$1","0",{"children":"Ask Sitecore for "}],["$","$1","1",{"children":["$","code",null,{"style":{"margin":"0 1px","display":"inline-block","padding":"3px 6px","fontSize":"0.875rem","lineHeight":1.25,"maxWidth":"100%","fontFamily":"Menlo, Monaco, Consolas, \\"Liberation Mono\\", \\"Courier New\\", monospace","borderRadius":"3px","backgroundColor":"#F5F7F9"},"children":"/shop/,-w-"}]}],["$","$1","2",{"children":",�the wildcard route�so the rendering tree stays consistent with authoring expectations."}]]}]}]}],["$","$1","3",{"children":["$","li",null,{"children":["$","$1","3",{"children":[["$","$1","0",{"children":"Attach the product JSON to clientData so any layout component can subscribe to it (in this repo, ProductExample does)."}]]}]}]}]]}]}]]}]}],false]}],["$","section","ce036fa0-b8f1-4f11-8ffa-e6f5e74446a2-14",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","h2",null,{"className":"text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2","children":[["$","$1","0",{"children":"Wire it up in Next.js"}]]}]}],["$","$1","1",{"children":["$","ul",null,{"className":"list-disc list-outside ml-5 mt-4 text-gray-800 dark:text-gray-200","children":[["$","$1","0",{"children":["$","li",null,{"children":["$","$1","0",{"children":[["$","$1","0",{"children":"Components like ProductExample should be added to the wildcard item�s rendering layout. They can now render titles, media, price, and reviews pulled live from clientData."}]]}]}]}]]}]}]]}]}],false]}],["$","section","5f00de1c-3376-46a6-b92b-e80e432b32ce-15",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","h2",null,{"className":"text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2","children":[["$","$1","0",{"children":"Testing the flow"}]]}]}],["$","$1","1",{"children":["$","ol",null,{"className":"list-decimal list-outside ml-5 mt-4 text-gray-800 dark:text-gray-200","children":[["$","$1","0",{"children":["$","li",null,{"children":["$","$1","0",{"children":[["$","$1","0",{"children":"Start the Next.js app and visit /shop/aurora-bamboo-desk-lamp."}]]}]}]}],["$","$1","1",{"children":["$","li",null,{"children":["$","$1","1",{"children":[["$","$1","0",{"children":"The sitemap entry ensures the link exists."}]]}]}]}],["$","$1","2",{"children":["$","li",null,{"children":["$","$1","2",{"children":[["$","$1","0",{"children":"IdkSitecoreClient finds the product by slug, injects it into the page, and the React component renders the full card."}]]}]}]}]]}]}]]}]}],false]}],["$","section","925f6bc8-490b-4da4-9c5e-5f9e0dbfeb2d-16",{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[16.66666%] xl:mx-[22.2222%] pt-0 pb-0","children":[["$","$1","0",{"children":["$","h2",null,{"className":"text-2xl leading-7 font-bold text-gray-800 dark:text-white mt-6 mb-2","children":[["$","$1","0",{"children":"Conclusion"}]]}]}],["$","$1","1",{"children":["$","p",null,{"className":"text-base leading-7 mt-6 mb-6 text-gray-800 dark:text-gray-100","children":[["$","$1","0",{"children":"In a handful of touches�middleware, Sitecore client, and two components�we turned the sitemap links into fully hydrated product pages. Authors keep working with a single wildcard item, while the Content SDK handles the rest. As always, you can view the code sample "}],["$","$1","1",{"children":["$","a",null,{"href":"https://github.com/the-real-bro-grammer/content-sdk-demo-ssr","target":"_blank","className":"inline-block text-sky-500 hover:text-sky-600 font-bold hover:-translate-y-px hover:underline transition-all ease-out duration-150","rel":"noopener","children":[["$","$1","0",{"children":"here"}]]}]}],["$","$1","2",{"children":" on my Public GitHub Profile. Happy Coding!"}]]}]}]]}]}],false]}]],[["$","style",null,{"children":"\\n.cil14c {\\n  display:block;\\n  position: fixed;\\n  box-sizing: border-box;\\n  z-index: 999;\\n  bottom: 20px;\\n  left: 20px;\\n  padding: 5px 12px;\\n  background-color: #ffffffdd;\\n  display: flex;\\n  justify-content: center;\\n  align-items: center;\\n  color: #1e293b;\\n  font-size: 11px;\\n  font-weight: 600;\\n  border: 1px solid #e2e8f0cc;\\n  border-radius: 20px;\\n  text-transform: uppercase;\\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);\\n  filter: none;\\n  transition: all 300ms ease;\\n}\\n.cil14c:hover {\\n  background-color: #ffffff;\\n  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));\\n}\\n.cil14c .l {\\n  transition: color 300ms ease;\\n}\\n.cil14c:hover .l {\\n  color: #f65a8e;\\n}\\n      "}],["$","a",null,{"href":"https://reactbricks.com?utm_campaign=site-badge","target":"_blank","className":"cil14c","children":[["$","img",null,{"src":"https://reactbricks.com/_next/static/media/reactbricks_icon.c57a7be4.svg","style":{"width":18,"height":18,"marginRight":6}}],["$","span",null,{"children":["Made in ",["$","span",null,{"className":"l","children":"React Bricks"}]]}]]}]]],false,false,["$","$L15",null,{"pageId":"5a8893ce-31e8-4073-9e1f-f16c41f8e028","language":"en","editorPath":"/admin/editor","clickToEditSide":"BOTTOM-RIGHT"}]]\n',
+            ]);
+        </script>
+        <script>
+            self.__next_f.push([
+                1,
+                '4:["$","html",null,{"lang":"$undefined","suppressHydrationWarning":true,"children":["$","body",null,{"className":"bg-white dark:bg-[#0d1117]","children":["$","$L16",null,{"attribute":"class","storageKey":"color-mode","enableSystem":false,"defaultTheme":"light","children":["$","main",null,{"children":["$","$L17",null,{"children":["$","div",null,{"className":"flex flex-col h-screen justify-between font-content antialiased","children":["$","main",null,{"className":"mb-auto dark:bg-gray-900","children":[[[[["$","$L18","5496ac8d-34ed-4f0f-aa2c-966dbb2c48cb-0",{"children":["$","section",null,{"className":"bg-white dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",false,["$","div",null,{"className":"relative","children":["$","nav",null,{"className":"py-5 px-5 sm:mx-[5.55555%] xl:mx-[11.1111%] flex justify-start items-center","children":[["$","$L19",null,{"href":"/","target":"$undefined","rel":"$undefined","className":"inline-flex py-1.5 px-2 mr-6","activeClassName":"$undefined","children":["$","img",null,{"src":"https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/original/USMpFQDZDwSDHYa/idk-sitecore-transparent.webp","srcSet":"https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-250/idk-sitecore-transparent.webp 250w, https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-150/idk-sitecore-transparent.webp 150w, https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-75/idk-sitecore-transparent.webp 75w","sizes":"100vw","alt":"IDK Sitecore","width":"250","height":"50","loading":"eager","decoding":"async","className":"rb-lazy block w-32 h-7 object-contain object-left","style":{},"fetchPriority":"high"}]}],["$","div",null,{"className":"hidden lg:flex items-center space-x-2","children":[["$","div","d0f20a4d-abfe-4a85-b77a-a380f8442a58-0",{"children":[["$","$L19",null,{"href":"/","target":"$undefined","rel":"$undefined","className":"hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600","activeClassName":"text-sky-600 bg-sky-500/10 dark:bg-sky-500/30","children":[["$","$1","0",{"children":["$","span",null,{"children":[["$","$1","0",{"children":"Home"}]]}]}]]}],["$","$L19",null,{"href":"/","target":"$undefined","rel":"$undefined","className":"block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600","activeClassName":"$undefined","children":["$","$L1a",null,{"type":"DIV","clickAction":"SET_MOBILE_MENU_OPEN_FALSE","refName":"NONE","children":[" ","Home"]}]}]]}],["$","div","04d20cd6-c09e-43ee-9139-2f97ea9fc195-1",{"children":[["$","$L19",null,{"href":"/blog","target":"$undefined","rel":"$undefined","className":"hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600","activeClassName":"text-sky-600 bg-sky-500/10 dark:bg-sky-500/30","children":[["$","$1","0",{"children":["$","span",null,{"children":[["$","$1","0",{"children":"Blog"}]]}]}]]}],["$","$L19",null,{"href":"/blog","target":"$undefined","rel":"$undefined","className":"block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600","activeClassName":"$undefined","children":["$","$L1a",null,{"type":"DIV","clickAction":"SET_MOBILE_MENU_OPEN_FALSE","refName":"NONE","children":[" ","Blog"]}]}]]}],["$","div","256c46c5-e9c2-4fb7-bf2d-558aa90322e3-2",{"children":[["$","$L19",null,{"href":"/about","target":"$undefined","rel":"$undefined","className":"hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600","activeClassName":"text-sky-600 bg-sky-500/10 dark:bg-sky-500/30","children":[["$","$1","0",{"children":["$","span",null,{"children":[["$","$1","0",{"children":"About"}]]}]}]]}],["$","$L19",null,{"href":"/about","target":"$undefined","rel":"$undefined","className":"block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600","activeClassName":"$undefined","children":["$","$L1a",null,{"type":"DIV","clickAction":"SET_MOBILE_MENU_OPEN_FALSE","refName":"NONE","children":[" ","About"]}]}]]}],["$","div","abf04325-367b-4b81-9876-80f25459adff-3",{"children":[["$","$L19",null,{"href":"/contact","target":"$undefined","rel":"$undefined","className":"hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600","activeClassName":"text-sky-600 bg-sky-500/10 dark:bg-sky-500/30","children":[["$","$1","0",{"children":["$","span",null,{"children":[["$","$1","0",{"children":"Contact"}]]}]}]]}],["$","$L19",null,{"href":"/contact","target":"$undefined","rel":"$undefined","className":"block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600","activeClassName":"$undefined","children":["$","$L1a",null,{"type":"DIV","clickAction":"SET_MOBILE_MENU_OPEN_FALSE","refName":"NONE","children":[" ","Contact"]}]}]]}],["$","div","0f5f0376-d7c1-4de3-8cf4-f4bc3248011d-4",{"children":[["$","$L19",null,{"href":"/videos","target":"$undefined","rel":"$undefined","className":"hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600","activeClassName":"text-sky-600 bg-sky-500/10 dark:bg-sky-500/30","children":[["$","$1","0",{"children":["$","span",null,{"children":[["$","$1","0",{"children":"Videos"}]]}]}]]}],["$","$L19",null,{"href":"/videos","target":"$undefined","rel":"$undefined","className":"block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600","activeClassName":"$undefined","children":["$","$L1a",null,{"type":"DIV","clickAction":"SET_MOBILE_MENU_OPEN_FALSE","refName":"NONE","children":[" ","Videos"]}]}]]}]]}],["$","div",null,{"className":"hidden lg:block ml-auto","children":null}],["$","$L1b",null,{"menuItems":[["$","div","d0f20a4d-abfe-4a85-b77a-a380f8442a58-0",{"children":[["$","$L19",null,{"href":"/","target":"$undefined","rel":"$undefined","className":"hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600","activeClassName":"text-sky-600 bg-sky-500/10 dark:bg-sky-500/30","children":[["$","$1","0",{"children":["$","span",null,{"children":[["$","$1","0",{"children":"Home"}]]}]}]]}],["$","$L19",null,{"href":"/","target":"$undefined","rel":"$undefined","className":"block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600","activeClassName":"$undefined","children":["$","$L1a",null,{"type":"DIV","clickAction":"SET_MOBILE_MENU_OPEN_FALSE","refName":"NONE","children":[" ","Home"]}]}]]}],["$","div","04d20cd6-c09e-43ee-9139-2f97ea9fc195-1",{"children":[["$","$L19",null,{"href":"/blog","target":"$undefined","rel":"$undefined","className":"hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600","activeClassName":"text-sky-600 bg-sky-500/10 dark:bg-sky-500/30","children":[["$","$1","0",{"children":["$","span",null,{"children":[["$","$1","0",{"children":"Blog"}]]}]}]]}],["$","$L19",null,{"href":"/blog","target":"$undefined","rel":"$undefined","className":"block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600","activeClassName":"$undefined","children":["$","$L1a",null,{"type":"DIV","clickAction":"SET_MOBILE_MENU_OPEN_FALSE","refName":"NONE","children":[" ","Blog"]}]}]]}],["$","div","256c46c5-e9c2-4fb7-bf2d-558aa90322e3-2",{"children":[["$","$L19",null,{"href":"/about","target":"$undefined","rel":"$undefined","className":"hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600","activeClassName":"text-sky-600 bg-sky-500/10 dark:bg-sky-500/30","children":[["$","$1","0",{"children":["$","span",null,{"children":[["$","$1","0",{"children":"About"}]]}]}]]}],["$","$L19",null,{"href":"/about","target":"$undefined","rel":"$undefined","className":"block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600","activeClassName":"$undefined","children":["$","$L1a",null,{"type":"DIV","clickAction":"SET_MOBILE_MENU_OPEN_FALSE","refName":"NONE","children":[" ","About"]}]}]]}],["$","div","abf04325-367b-4b81-9876-80f25459adff-3",{"children":[["$","$L19",null,{"href":"/contact","target":"$undefined","rel":"$undefined","className":"hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600","activeClassName":"text-sky-600 bg-sky-500/10 dark:bg-sky-500/30","children":[["$","$1","0",{"children":["$","span",null,{"children":[["$","$1","0",{"children":"Contact"}]]}]}]]}],["$","$L19",null,{"href":"/contact","target":"$undefined","rel":"$undefined","className":"block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600","activeClassName":"$undefined","children":["$","$L1a",null,{"type":"DIV","clickAction":"SET_MOBILE_MENU_OPEN_FALSE","refName":"NONE","children":[" ","Contact"]}]}]]}],["$","div","0f5f0376-d7c1-4de3-8cf4-f4bc3248011d-4",{"children":[["$","$L19",null,{"href":"/videos","target":"$undefined","rel":"$undefined","className":"hidden lg:inline-flex justify-center items-center text-sm font-bold py-1.5 px-2 rounded-[5px] transition-colors ease-out text-gray-600 dark:text-white hover:bg-sky-500/20 dark:hover:bg-sky-500/40 hover:text-sky-600","activeClassName":"text-sky-600 bg-sky-500/10 dark:bg-sky-500/30","children":[["$","$1","0",{"children":["$","span",null,{"children":[["$","$1","0",{"children":"Videos"}]]}]}]]}],["$","$L19",null,{"href":"/videos","target":"$undefined","rel":"$undefined","className":"block lg:hidden text-sm mb-3 transition-colors ease-out text-gray-800 hover:text-sky-600","activeClassName":"$undefined","children":["$","$L1a",null,{"type":"DIV","clickAction":"SET_MOBILE_MENU_OPEN_FALSE","refName":"NONE","children":[" ","Videos"]}]}]]}]]}]]}]}],["$","div",null,{"className":"pt-0 pb-0","children":["$","hr",null,{"className":"border-black/10 dark:border-white/20 relative"}]}]]}]}]],false],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}],[[["$","footer","662e33fb-8f39-4999-8c7c-fc6236fc8ab4-0",{"children":["$","section",null,{"className":"bg-gray-50 dark:bg-gray-900 relative","children":[["$","div",null,{"className":"absolute inset-0","children":null}],"$undefined",["$","div",null,{"className":"pt-0 pb-0","children":["$","hr",null,{"className":"border-black/10 dark:border-white/20 relative"}]}],["$","div",null,{"className":"relative","children":["$","div",null,{"className":"px-5 sm:mx-[5.55555%] xl:mx-[11.1111%] pt-12 lg:pt-16 pb-12 lg:pb-16 flex justify-between flex-wrap","children":[["$","div",null,{"className":"w-full mb-12 lg:w-auto lg:mb-0 lg:mr-8","children":[["$","a",null,{"href":"","target":"$undefined","className":"block mb-4","children":["$","img",null,{"src":"https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/original/USMpFQDZDwSDHYa/idk-sitecore-transparent.webp","srcSet":"https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-250/idk-sitecore-transparent.webp 250w, https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-150/idk-sitecore-transparent.webp 150w, https://assets.reactbricks.com/7MAXiMpTK0n6aRU/images/src_set/USMpFQDZDwSDHYa-75/idk-sitecore-transparent.webp 75w","sizes":"100vw","alt":"IDK Sitecore","width":"250","height":"50","loading":"eager","decoding":"async","className":"rb-lazy w-48 h-7 object-contain object-left","style":{},"fetchPriority":"high"}]}],[["$","$1","0",{"children":["$","p",null,{"className":"text-sm text-gray-500 dark:text-white","children":[["$","$1","0",{"children":"� 2025 IDK Sitecore"}]]}]}],["$","$1","1",{"children":["$","p",null,{"className":"text-sm text-gray-500 dark:text-white","children":[["$","$1","0",{"children":"Built by a dev who just wants to help"}]]}]}]]]}],null]}]}],false]}]}]],false]],false]}]}]}]}]}]}]}]\n',
+            ]);
+        </script>
+        <script>
+            self.__next_f.push([
+                1,
+                'a:{"metadata":[["$","title","0",{"children":"Part 2: Wildcard Pages with Content SDK: Item Resolver"}],["$","meta","1",{"name":"description","content":"Next.js with Server Components"}]],"error":null,"digest":"$undefined"}\n12:{"metadata":"$a:metadata","error":null,"digest":"$undefined"}\n',
+            ]);
+        </script>
+    </body>
+</html>

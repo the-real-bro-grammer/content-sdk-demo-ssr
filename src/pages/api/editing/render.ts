@@ -14,12 +14,12 @@ import { EditingRenderMiddleware } from '@sitecore-content-sdk/nextjs/editing';
  */
 
 export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '2mb',
+    api: {
+        bodyParser: {
+            sizeLimit: '2mb',
+        },
+        responseLimit: false,
     },
-    responseLimit: false,
-  },
 };
 
 // Wire up the EditingRenderMiddleware handler

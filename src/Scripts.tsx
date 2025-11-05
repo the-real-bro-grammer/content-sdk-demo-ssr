@@ -6,14 +6,14 @@ import CdpPageView from 'components/content-sdk/CdpPageView';
 import { JSX } from 'react';
 
 const Scripts = (): JSX.Element => {
-  return (
-    <>
-      <BYOC />
-      <FEAASScripts />
-      <CdpPageView />
-      <EditingScripts />
-    </>
-  );
+    return (
+        <>
+            <BYOC />
+            <FEAASScripts />
+            <CdpPageView />
+            <EditingScripts />
+        </>
+    );
 };
 
 export default Scripts;

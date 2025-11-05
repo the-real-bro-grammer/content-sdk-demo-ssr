@@ -1,8 +1,15 @@
 {
-  "endOfLine": "crlf",
-  "semi": true,
-  "singleQuote": true,
-  "tabWidth": 2,
-  "trailingComma": "es5",
-  "printWidth": 100
+    "endOfLine": "auto",
+    "semi": true,
+    "tabWidth": 4,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "singleQuote": true,
+    "editor.formatOnSave": true,
+    "proseWrap": "always",
+    "requireConfig": false,
+    "useTabs": false,
+    "sortingMethod": "alphabetical",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false
 }
