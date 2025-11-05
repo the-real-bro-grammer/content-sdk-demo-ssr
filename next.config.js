@@ -94,6 +94,7 @@ const nextConfig = {
     // Add sass settings for SXA themes and styles
     sassOptions: {
         importer: new SassAlias({
+            '@sass': path.join(__dirname, './src/assets', 'sass'),
             '@globals': path.join(process.cwd(), './src/assets', 'globals'),
             '@fontawesome': path.join(process.cwd(), './node_modules', 'font-awesome'),
         }).getImporter(),
