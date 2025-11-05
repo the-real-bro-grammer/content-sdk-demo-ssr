@@ -1,0 +1,5 @@
+@use '@globals' as *;
+
+.clearfix {
+    @include clearfix;
+}

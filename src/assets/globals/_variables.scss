@@ -1,0 +1,52 @@
+$text-basic: #747474;
+$text-basic-active: #878787;
+$text-white: #ffffff;
+$text-heading-color: #222222;
+
+$bg-basic-color: #ffffff;
+$bg-basic-color-active: #cccccc;
+$bg-light-gray: #f7f7f7;
+$bg-submenu: #edebeb;
+$bg-submenu-active: #f6f6f6;
+$bg-black: #000000;
+$bg-black-active: #3d3d3d;
+
+$border-gray: #d2d2d2;
+$border-basic-color: #89c6cc;
+
+$rich-content-border: transparent;
+$rich-content-link-color: #de232f;
+$rich-content-link-color-active: #878787;
+
+$nav-bg: transparent;
+$nav-color-root: $text-basic;
+$nav-color-root-active: $text-basic-active;
+$nav-border-root: $border-basic-color;
+$nav-bg-submenu: #edebeb;
+$nav-bg-submenu-active: #f6f6f6;
+$nav-bg-root: $bg-submenu-active;
+$nav-border-submenu: $border-basic-color;
+$nav-submenu-item-border: $border-gray;
+$nav-color-submenu: #222222;
+$nav-color-submenu-active: #222222;
+$menu-hover-color: #1b809e;
+$menu-active-color: #176f89;
+
+$navigation-font-basic: 18px;
+$navigation-font-basic-submenu: 14px;
+$font-normal: 13px;
+$font-big: 20px;
+
+$text-size-14: 14px;
+$text-size-30: 30px;
+$text-size-48: 48px;
+
+$small-margin: 10px;
+$extrasmall-margin: 5px;
+
+$component-gutter: 8px;
+
+$breakpoint-mobile: 380px;
+$breakpoint-mobile-horizontal: 640px;
+$breakpoint-mobile-large: 992px;
+$breakpoint-desktop: 1024px;

@@ -1,3 +1,10 @@
 // This file bootstraps our application styles by loading:
-// • Bootstrap: foundational grid system, utilities, and core components.
-@import 'bootstrap/scss/bootstrap';
+// - Bootstrap: foundational grid system, utilities, and core components.
+// - Project-level styling for converted components.
+@use 'bootstrap/scss/bootstrap';
+@use '@globals' as *;
+@use './components/common';
+@use './components/container';
+@use './components/navigation';
+@use './components/rich-text';
+@use './components/utilities';

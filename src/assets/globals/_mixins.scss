@@ -1,0 +1,73 @@
+@use './variables' as vars;
+
+@mixin respond-to($media) {
+    @if $media == mobile {
+        @media only screen and (max-width: vars.$breakpoint-mobile) {
+            @content;
+        }
+    } @else if $media == mobile-horizontal {
+        @media only screen and (max-width: vars.$breakpoint-mobile-horizontal - 1px) {
+            @content;
+        }
+    } @else if $media == mobile-large {
+        @media only screen and (max-width: vars.$breakpoint-mobile-large) {
+            @content;
+        }
+    } @else if $media == tablet {
+        @media only screen and (min-width: vars.$breakpoint-mobile + 1px) and (max-width: vars.$breakpoint-desktop - 1px) {
+            @content;
+        }
+    } @else if $media == all-mobile {
+        @media only screen and (max-width: vars.$breakpoint-desktop - 1px) {
+            @content;
+        }
+    } @else if $media == desktop {
+        @media only screen and (min-width: vars.$breakpoint-desktop) {
+            @content;
+        }
+    }
+}
+
+@mixin clearfix {
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin font-size($size-value: 1.6) {
+    font-size: $size-value * 10px;
+    font-size: $size-value * 1rem;
+}
+
+@mixin border-basic($position: all, $border-color: vars.$border-basic-color, $border-width: 1px) {
+    @if $position != all {
+        border-#{$position}-width: $border-width;
+        border-#{$position}-style: solid;
+        border-#{$position}-color: $border-color;
+    } @else {
+        border-width: $border-width;
+        border-style: solid;
+        border-color: $border-color;
+    }
+}
+
+@mixin default-link-button {
+    @include border-basic();
+    @include font-size(1.2);
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    margin: 5px 0;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: vars.$text-basic;
+
+    &:hover {
+        color: vars.$text-basic;
+        background: vars.$bg-light-gray;
+    }
+}
