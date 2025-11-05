@@ -51,48 +51,66 @@ const Default = (props: ComponentProps): JSX.Element => {
             : null;
 
     return (
-        <div className={`component ${props.params.styles}`} id={id ? id : undefined}>
-            IS THIS CALLED?
-            <div className="component-content">
-                <article className="product-example">
-                    <header className="product-example__header">
-                        <p className="product-example__category">
-                            {category}
-                            {brand ? ` - ${brand}` : ''}
-                        </p>
-                        <h2 className="product-example__title">{name}</h2>
-                        {sku ? <p className="product-example__sku">SKU: {sku}</p> : null}
-                    </header>
-
-                    <div className="product-example__body">
-                        {imageUrl ? (
-                            <div className="product-example__media">
-                                <img src={imageUrl} alt={name} loading="lazy" />
-                            </div>
-                        ) : null}
-
-                        <div className="product-example__details">
-                            <p className="product-example__price">{priceLabel}</p>
-                            <p className="product-example__stock">{stockLabel}</p>
-                            {ratingLabel ? (
-                                <p className="product-example__rating" aria-label="Customer rating">
-                                    {ratingLabel}
-                                </p>
-                            ) : null}
-                            <p className="product-example__description">{description}</p>
-
-                            {tags.length ? (
-                                <ul className="product-example__tags">
-                                    {tags.map((tag) => (
-                                        <li key={tag} className="product-example__tag">
-                                            {tag}
-                                        </li>
-                                    ))}
-                                </ul>
-                            ) : null}
+        <div className={`component container mt-5 ${props.params.styles}`} id={id ? id : undefined}>
+            <div className="row">
+                <div className="col-md-6 mb-4">
+                    {imageUrl ? (
+                        <div className="product-example__media">
+                            <img
+                                src={imageUrl}
+                                alt={name}
+                                loading="lazy"
+                                className="img-fluid rounded mb-3 product-image"
+                            />
                         </div>
+                    ) : null}
+                </div>
+                <div className="col-md-6">
+                    <h2 className="mb-3">{name}</h2>
+                    <p className="product-example__category">
+                        {category}
+                        {brand ? ` - ${brand}` : ''}
+                    </p>
+                    <p className="text-muted mb-4">SKU: {sku}</p>
+                    <div className="mb-3">
+                        <span className="h4 me-2">{priceLabel}</span>
+                        <span className="text-muted">({stockLabel})</span>
                     </div>
-                </article>
+                    {ratingLabel ? (
+                        <p className="product-example__rating" aria-label="Customer rating">
+                            {ratingLabel}
+                        </p>
+                    ) : null}
+                    <p className="mb-4">{description}</p>
+                    {tags.length ? (
+                        <ul className="list-group list-group-horizontal">
+                            {tags.map((tag) => (
+                                <li key={tag} className="">
+                                    #{tag}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : null}
+                    <div className="mb-4">
+                        <label htmlFor="quantity" className="form-label">
+                            Quantity:
+                        </label>
+                        <input
+                            type="number"
+                            className="form-control"
+                            id="quantity"
+                            value="1"
+                            min="1"
+                            style={{ width: '80px' }}
+                        ></input>
+                    </div>
+                    <button className="btn btn-primary btn-lg mb-3 me-2">
+                        <i className="bi bi-cart-plus"></i> Add to Cart
+                    </button>
+                    <button className="btn btn-outline-secondary btn-lg mb-3">
+                        <i className="bi bi-heart"></i> Add to Wishlist
+                    </button>
+                </div>
             </div>
         </div>
     );

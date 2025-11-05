@@ -97,7 +97,6 @@ export class IdkSitecoreClient extends SitecoreClient {
         fetchOptions?: FetchOptions
     ): Promise<Page | null> {
         const computedPath = this.parsePath(path);
-        console.log('TEST');
         if (computedPath.startsWith('/shop')) {
             // /shop is backed by a wildcard item; resolve the slug and hydrate product context manually.
             const pathSplit = computedPath.split('/');
@@ -118,12 +117,21 @@ export class IdkSitecoreClient extends SitecoreClient {
                 return null;
             }
 
+            if (
+                productDetailPage.layout.sitecore.route?.fields?.Title &&
+                'value' in productDetailPage.layout.sitecore.route?.fields?.Title
+            ) {
+                productDetailPage.layout.sitecore.route.fields.Title.value = product.name;
+            }
+
             if (!productDetailPage.layout.sitecore.context.clientData) {
                 productDetailPage.layout.sitecore.context.clientData = {};
             }
 
             productDetailPage.layout.sitecore.context.clientData[CONSTANTS.CONTEXT.PRODUCT_DETAIL] =
                 product;
+
+            return productDetailPage;
         }
 
         // Delegate back to the base client so normal Sitecore GraphQL rendering continues.
