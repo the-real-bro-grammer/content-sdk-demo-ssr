@@ -1,0 +1,69 @@
+{
+    "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+    "namespace": "idkSitecore",
+    "items": {
+        "path": "idkSitecore",
+        "includes": [
+            {
+                "name": "Templates.Foundation",
+                "path": "/sitecore/templates/Foundation/Demo",
+                "scope": "ItemAndDescendants"
+            },
+            {
+                "name": "Templates.Feature1",
+                "path": "/sitecore/templates/Feature/Demo-ContentSDK-SSR",
+                "scope": "ItemAndDescendants"
+            },
+            {
+                "name": "Templates.Feature2",
+                "path": "/sitecore/templates/Feature/Demo-JSS",
+                "scope": "ItemAndDescendants"
+            },
+            {
+                "name": "Templates.Project",
+                "path": "/sitecore/templates/Project/demo",
+                "scope": "ItemAndDescendants"
+            },
+            {
+                "name": "Settings.APIKeys",
+                "path": "/sitecore/system/Settings/Services/API Keys",
+                "scope": "ItemAndDescendants"
+            },
+            {
+                "name": "Scripts",
+                "path": "/sitecore/system/Modules/PowerShell/Script Library/IDK Sitecore",
+                "scope": "ItemAndDescendants"
+            },
+            {
+                "name": "Settings.Project",
+                "path": "/sitecore/system/Settings/Project/demo",
+                "scope": "ItemAndDescendants"
+            },
+            {
+                "name": "Media.Project",
+                "path": "/sitecore/media library/Project/demo",
+                "scope": "ItemAndChildren"
+            },
+            {
+                "name": "Renderings.Feature",
+                "path": "/sitecore/layout/Renderings/Feature/demo",
+                "scope": "ItemAndDescendants"
+            },
+            {
+                "name": "Renderings.Project",
+                "path": "/sitecore/layout/Renderings/Project/content-sdk-demo",
+                "scope": "ItemAndDescendants"
+            },
+            {
+                "name": "PlaceholderSettings.Feature",
+                "path": "/sitecore/layout/Placeholder Settings/Feature/demo",
+                "scope": "ItemAndDescendants"
+            },
+            {
+                "name": "Content.Demo",
+                "path": "/sitecore/content/demo",
+                "scope": "ItemAndDescendants"
+            }
+        ]
+    }
+}
